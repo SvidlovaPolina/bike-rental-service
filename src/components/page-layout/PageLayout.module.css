@@ -1,12 +1,11 @@
 .layout {
 	display: block;
-	max-width: 1610px;
-	margin: 109px auto;
 }
 
 .service {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
+	margin-top: 109px;
 }
 
 .descriptionService {
@@ -56,10 +55,16 @@
 	letter-spacing: 0.01em;
 	width: 566px;
 	height: 85px;
+	margin-left: 131px;
 }
 
 .instruction {
 	display: flex;
+	background-image: url(../../assets/phone.jpg);
+	justify-content: flex-end;
+	align-items: center;
+    background-size: cover;
+    height: 803px;
 }
 
 .phone {
@@ -104,4 +109,116 @@
 	font-size: 24px;
 	line-height: 28px;
 	letter-spacing: 0.01em;
+	margin-right: 178px;
+}
+
+.rates {
+	margin-top: 102px;
+}
+
+.ratesCards {
+	display: flex;
+	justify-content: center;
+}
+
+.cardMinutes {
+	width: 370px;
+	height: 300px;
+	background: #F291BF;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+	border-radius: 20px;
+	margin-right: 47px;
+	padding: 22px;
+}
+
+.cardThirty {
+	width: 370px;
+	height: 300px;
+	background: #F9CF3E;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+	border-radius: 20px;
+	margin-right: 47px;
+	padding: 22px;
+}
+
+.cardNinety {
+	width: 370px;
+	height: 300px;
+	background: #ADD3C7;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+	border-radius: 20px;
+	padding: 22px;
+}
+
+.cardText {
+	color: #FFFFFF;
+	font-family: 'Ubuntu';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 32px;
+	line-height: 37px;
+	letter-spacing: 0.01em;
+}
+
+.booking {
+	color: #E0DCDC;
+	font-family: 'Ubuntu';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 32px;
+	line-height: 37px;
+	letter-spacing: 0.01em;
+}
+
+.ratesText {
+	display: flex;
+	justify-content: center;
+	font-family: 'Ubuntu';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 24px;
+	line-height: 28px;
+	text-align: center;
+	letter-spacing: 0.01em;
+	width: 817px;
+	margin: 78px auto;
+}
+
+.mobileApp {
+	background-color: #EEDDFF;
+	display: flex;
+	justify-content: center;
+}
+
+.downloadApp {
+	display: block;
+	margin-top: 164px;
+	margin-right: 197px;
+}
+
+.titleApp {
+	font-family: 'Ubuntu';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 40px;
+	line-height: 46px;
+	letter-spacing: 0.01em;
+	margin-left: 14px;
+}
+
+.textApp {
+	font-family: 'Ubuntu';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 30px;
+	line-height: 34px;
+	text-align: center;
+	letter-spacing: 0.01em;
+}
+
+.downloadButtons {
+	display: flex;
+	justify-content: space-between;
+    width: 284px;
+	margin-left: 111px;
 }
