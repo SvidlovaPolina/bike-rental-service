@@ -1,0 +1,107 @@
+.layout {
+	display: block;
+	max-width: 1610px;
+	margin: 109px auto;
+}
+
+.service {
+	display: flex;
+	justify-content: space-between;
+}
+
+.descriptionService {
+	display: block;
+	margin-left: 95px;
+}
+
+.titleService {
+	font-family: 'Ubuntu';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 60px;
+	line-height: 69px;
+	letter-spacing: 0.01em;
+	text-transform: uppercase;
+	width: 560px;
+	height: 138px;
+}
+
+.textService {
+	font-family: 'Ubuntu';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 24px;
+	line-height: 28px;
+	width: 447px;
+	height: 88px;
+}
+
+.sapiens {
+	width: 761px;
+	height: 640px;
+	margin-right: 100px;
+}
+
+.howToUse {
+	display: block;
+	margin-top: 90px;
+}
+
+.title {
+	font-family: 'Ubuntu';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 60px;
+	line-height: 69px;
+	letter-spacing: 0.01em;
+	width: 566px;
+	height: 85px;
+}
+
+.instruction {
+	display: flex;
+}
+
+.phone {
+	width: 500px;
+	height: 500px;
+}
+
+.instructionIcon {
+	display: flex;
+    flex-direction: column;
+    height: 421px;
+    justify-content: space-between;
+	margin-top: 28px;
+	margin-left: 214px;
+}
+
+.instructionTitle {
+	display: flex;
+    flex-direction: column;
+	height: 457px;
+    justify-content: space-between;
+	margin-left: 20px;
+	margin-top: 10px;
+	font-family: 'Ubuntu';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 28px;
+	letter-spacing: 0.01em;
+}
+
+.instructionDescription {
+	display: flex;
+	flex-direction: column;
+	height: 494px;
+	width: 480px;
+	justify-content: space-between;
+	margin-left: 40px;
+	font-family: 'Ubuntu';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 24px;
+	line-height: 28px;
+	letter-spacing: 0.01em;
+}

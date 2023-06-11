@@ -1,0 +1,28 @@
+.header {
+	background: #F291BF;
+	color: #fff;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20px;
+	height: 93px;
+}
+
+.bikee {
+	display: flex;
+}
+
+.logo {
+	width: 35px;
+	margin-right: 15px;
+}
+
+.navigation {
+	display: flex;
+	Width: 386px;
+	justify-content: space-between;
+}
+
+.sprint {
+
+}
