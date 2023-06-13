@@ -1,8 +1,12 @@
-
+import css from './StaffPage.module.css'
 
 function StaffPage() {
 	return (
-	    <h1>Страница для сотрудников</h1>
+		<>
+			<div className={css.container}>
+				<h2 className={css.title}>Страница для сотрудников</h2>
+			</div>
+		</>
 	)
 }
 

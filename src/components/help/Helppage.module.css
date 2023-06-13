@@ -1,0 +1,75 @@
+.container {
+    margin: 0 78px;
+}
+
+.title {
+	font-family: 'Roboto Slab';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 33px;
+	line-height: 69px;
+	letter-spacing: 0.01em;
+	height: 60px;
+    margin: 12px;
+}
+
+.question {
+    height: 50px;
+    background-color: #EEDDFF;
+    border-radius: 20px;
+    display: inline-block;
+    padding: 0 19px;
+}
+
+.questionText {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 30px;
+    margin: 7px 0;
+}
+
+.answer {
+    width: 1280px;
+    height: 100%;
+    background-color: #EAF3FA;
+    border-radius: 20px;
+    display: flex;
+    margin: 21px 201px;
+    padding: 0 24px;
+}
+
+.answerText {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 28px;
+}
+
+.buttonReportBlock {
+    display: flex;
+    justify-content: center;
+    margin-top: -15px;
+}
+
+.buttonReport {
+    height: 50px;
+    background-color: #FF8793;
+    border-radius: 20px;
+    display: inline-block;
+    padding: 0 19px;
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 30px;
+    margin: 7px 0;
+    border: 0;
+}
+
+.buttonReport:hover {
+    cursor: pointer;
+    background-color: #ffa7b0;
+}

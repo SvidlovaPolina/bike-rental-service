@@ -1,0 +1,14 @@
+.container {
+    margin: 0 78px;
+}
+
+.title {
+	font-family: 'Roboto Slab';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 33px;
+	line-height: 69px;
+	letter-spacing: 0.01em;
+	height: 60px;
+    margin: 12px;
+}

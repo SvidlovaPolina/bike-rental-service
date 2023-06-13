@@ -19,10 +19,15 @@
 
 .navigation {
 	display: flex;
-	Width: 386px;
+	Width: 468px;
 	justify-content: space-between;
 }
 
-.sprint {
-
+.navigation a {
+	text-decoration: none;
+	font-family: 'Roboto Slab';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 32px;
 }
