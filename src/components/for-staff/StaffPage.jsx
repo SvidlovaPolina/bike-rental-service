@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom'
 import css from './StaffPage.module.css'
 
 function StaffPage() {
 	return (
 		<>
 			<div className={css.container}>
-				<h2 className={css.title}>Страница для сотрудников</h2>
+				<p className={css.forStaffText}>Эта страница доступна только авторизованным сотрудникам сервиса Bikee.<br />Пожалуйста, <Link to="/authorization">войдите</Link> или <Link to="/registration">зарегистрируйтесь</Link>.</p>
 			</div>
 		</>
 	)
