@@ -57,7 +57,7 @@
 
 .instruction {
 	display: flex;
-	background-image: url(../../assets/phone.jpg);
+	background-image: url(../../../assets/phone.jpg);
 	justify-content: flex-end;
 	align-items: center;
     background-size: cover;

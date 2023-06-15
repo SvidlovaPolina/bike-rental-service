@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom'
-import PageLayout from '../page-layout/PageLayout'
-import HelpPage from '../help/Helppage'
-import StaffPage from '../for-staff/StaffPage'
-import RegistrationPage from '../registration/RegistrationPage'
-import AuthorizationPage from '../authorization/AuthorizationPage'
-import ReportPage from '../report-a-theft/ReportPage'
+import PageLayout from '../pages/page-layout/PageLayout'
+import HelpPage from '../pages/help/Helppage'
+import StaffPage from '../pages/for-staff/StaffPage'
+import RegistrationPage from '../pages/registration/RegistrationPage'
+import AuthorizationPage from '../pages/authorization/AuthorizationPage'
+import ReportPage from '../pages/report-a-theft/ReportPage'
 import css from './Main.module.css'
 
 const Main = (props) => {

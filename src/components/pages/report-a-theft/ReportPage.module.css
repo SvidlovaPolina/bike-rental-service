@@ -1,0 +1,11 @@
+.homeLink {
+	display: block;
+	margin: 20px 20px;
+	text-decoration: none;
+	color: #737373;
+    font-size: 22px;
+}
+
+.homeLink:hover {
+	color: #000;
+}
