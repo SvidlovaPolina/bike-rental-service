@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import css from './Helppage.module.css'
 
 function HelpPage() {
@@ -25,7 +26,7 @@ function HelpPage() {
 					<p className={css.answerText}>Нажмите на кнопку ниже, чтобы сообщить о краже в службу поддержки. Для заполнения формы необходимы ваши ФИО и детали поездки.</p>
 				</div>
 				<div className={css.buttonReportBlock}>
-					<button className={css.buttonReport}>Сообщить о краже</button>
+					<Link to="/report" className={css.buttonReport}>Сообщить о краже</Link>
 				</div>
 				<div className={css.question}>
 					<p className={css.questionText}>Как связаться со службой поддержки?</p>

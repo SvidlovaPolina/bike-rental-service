@@ -1,4 +1,4 @@
-import Logo from '../../assets/logo.svg'
+import Logo from '../../assets/logo.png'
 import css from './Footer.module.css'
 
 const Footer = props => {
