@@ -18,6 +18,31 @@
 	height: 50px;
 }
 
+.sprint {
+	width: 74px;
+}
+
+.burgerIcon {
+    display: none;
+	font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0.01em;
+}
+
+.burgerIcon span {
+    display: block;
+    height: 7px;
+    width: 45px;
+    background-color: #F291BF;
+}
+
+.burgerIcon span:nth-child(2) {
+    margin: 6px 0;
+}
+
 .title {
 	font-family: 'Inter';
 	font-style: italic;
@@ -39,4 +64,54 @@
 	font-weight: 400;
 	font-size: 20px;
 	line-height: 32px;
+}
+
+.menu {
+	position: fixed;
+	top: 48px;
+	right: 16px;
+	min-width: 120px;
+	background-color: #A63268;
+	color: #fff;
+	border-radius: 20px;
+	padding: 8px 9px;
+  }
+
+  .items {
+    border-radius: 5px;
+    margin: 3px 0;
+    height: 39px;
+    display: flex;
+    align-items: center;
+    padding-left: 7px;
+  }
+
+  .items:hover {
+    cursor: pointer;
+	color: #e7e5e5;
+  }
+
+  .items a {
+	text-decoration: none;
+  }
+
+@media (max-width: 831px ) {
+	
+	.burgerIcon {
+        display: block;
+    }
+
+	.burgerIcon:hover {
+		cursor: pointer;
+	}
+
+    .burgerIcon span {
+        height: 2px;
+        width: 24px;
+		background-color: #fff
+    }
+
+	.navigation {
+		display: none;
+	}
 }

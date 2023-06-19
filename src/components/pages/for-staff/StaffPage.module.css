@@ -11,3 +11,11 @@
 	text-align: center;
 	margin-top: 67px;
 }
+
+.container a {
+	color: blue;
+}
+
+.container a:hover {
+	color: black;
+}

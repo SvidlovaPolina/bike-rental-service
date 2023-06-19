@@ -6,6 +6,7 @@ import IconRate from '../../../assets/IconRate.svg'
 import IconStart from '../../../assets/IconStart.svg'
 import GooglePlay from '../../../assets/GooglePlay.png'
 import AppStore from '../../../assets/AppStore.svg'
+import clsx from 'clsx'
 import css from './PageLayout.module.css'
 
 const PageLayout = () => {
@@ -47,22 +48,22 @@ const PageLayout = () => {
 			<section className={css.rates}>
 				<h2 className={css.title}>Наши тарифы</h2>
 				<div className={css.ratesCards}>
-					<div className={css.cardMinutes}>
-						<p className={css.cardText}>Тариф “Минуты”</p>
-						<p className={css.cardText}>2 ₽/мин</p>
-						<p className={css.cardText}>1 ₽/мин</p>
+					<div className={clsx(css.cards, css.cardMinutes)}>
+						<p>Тариф “Минуты”</p>
+						<p>2 ₽/мин</p>
+						<p>1 ₽/мин</p>
 						<p className={css.booking}>бронирование</p>
 					</div>
-					<div className={css.cardThirty}>
-						<p className={css.cardText}>Тариф “Полчаса”</p>
-						<p className={css.cardText}>55 ₽/ 30 мин</p>
-						<p className={css.cardText}>1 ₽/мин</p>
+					<div className={clsx(css.cards, css.cardThirty)}>
+						<p>Тариф “Полчаса”</p>
+						<p>55 ₽/ 30 мин</p>
+						<p>1 ₽/мин</p>
 						<p className={css.booking}>бронирование</p>
 					</div>
-					<div className={css.cardNinety}>
-						<p className={css.cardText}>Тариф “90 минут”</p>
-						<p className={css.cardText}>150 ₽/ 90 мин</p>
-						<p className={css.cardText}>1 ₽/мин</p>
+					<div className={clsx(css.cards, css.cardNinety)}>
+						<p>Тариф “90 минут”</p>
+						<p>150 ₽/ 90 мин</p>
+						<p>1 ₽/мин</p>
 						<p className={css.booking}>бронирование</p>
 					</div>
 				</div>

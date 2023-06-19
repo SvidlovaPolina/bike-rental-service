@@ -10,6 +10,7 @@
 
 .copy {
 	margin-left: auto;
+	text-align: end;
 }
 
 .logo {
@@ -23,4 +24,10 @@
 	font-weight: 700;
 	font-size: 32px;
 	line-height: 39px;
+}
+
+@media (max-width: 1205px ) {
+	.copy p {
+		margin: 0;
+	}
 }

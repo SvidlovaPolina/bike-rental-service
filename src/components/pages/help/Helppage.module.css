@@ -31,7 +31,6 @@
 }
 
 .answer {
-    width: 1280px;
     height: 100%;
     background-color: #EAF3FA;
     border-radius: 20px;
@@ -77,4 +76,24 @@
 .buttonReport:hover {
     cursor: pointer;
     background-color: #ffa7b0;
+}
+
+@media (max-width: 1511px) {
+
+    .answer {
+        margin: 21px 0;
+    }
+}
+
+@media (max-width: 693px) {
+
+    .question {
+        height: 100%;
+    }
+
+    .title {
+        height: 100%;
+        line-height: 34px;
+        text-align: center;
+    }
 }

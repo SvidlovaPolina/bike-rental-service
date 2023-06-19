@@ -61,7 +61,7 @@
 	justify-content: flex-end;
 	align-items: center;
     background-size: cover;
-    height: 600px;
+	height: 572px;
 }
 
 .phone {
@@ -72,7 +72,7 @@
 .instructionIcon {
 	display: flex;
     flex-direction: column;
-    height: 421px;
+    height: 315px;
     justify-content: space-between;
 	margin-top: 13px;
 }
@@ -80,7 +80,7 @@
 .instructionTitle {
 	display: flex;
     flex-direction: column;
-	height: 457px;
+	height: 303px;
     justify-content: space-between;
 	margin-left: 20px;
 	margin-top: 10px;
@@ -92,10 +92,14 @@
 	letter-spacing: 0.01em;
 }
 
+.instructionTitle p {
+	margin: 0;
+}
+
 .instructionDescription {
 	display: flex;
 	flex-direction: column;
-	height: 473px;
+	height: 329px;
 	width: 726px;
 	justify-content: space-between;
 	margin-left: 40px;
@@ -109,45 +113,28 @@
 	margin-top: 4px;
 }
 
+.instructionDescription p {
+	margin: 0;
+}
+
 .rates {
 	margin-top: 42px;
 }
 
 .ratesCards {
 	display: flex;
-	justify-content: center;
+    justify-content: space-around;
+	flex-wrap: wrap;
+    margin: 0 auto;
+    width: 975px;
 }
 
-.cardMinutes {
+.cards {
 	width: 247px;
 	height: 200px;
-	background: #F291BF;
-	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
-	border-radius: 20px;
-	margin-right: 47px;
-	padding: 22px;
-}
-
-.cardThirty {
-	width: 247px;
-	height: 200px;
-	background: #F9CF3E;
-	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
-	border-radius: 20px;
-	margin-right: 47px;
-	padding: 22px;
-}
-
-.cardNinety {
-	width: 247px;
-	height: 200px;
-	background: #ADD3C7;
 	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
 	border-radius: 20px;
 	padding: 22px;
-}
-
-.cardText {
 	color: #FFFFFF;
 	font-family: 'Roboto Slab';
 	font-style: normal;
@@ -155,7 +142,22 @@
 	font-size: 23px;
 	line-height: 37px;
 	letter-spacing: 0.01em;
-	margin: 2px 0;
+}
+
+.cards p {
+	margin: 0;
+}
+
+.cardMinutes {
+	background: #F291BF;
+}
+
+.cardThirty {
+	background: #F9CF3E;
+}
+
+.cardNinety {
+	background: #ADD3C7;
 }
 
 .booking {
@@ -179,8 +181,8 @@
 	line-height: 28px;
 	text-align: center;
 	letter-spacing: 0.01em;
-	width: 817px;
 	margin: 23px auto;
+	width: 917px;
 }
 
 .mobileApp {
@@ -191,9 +193,14 @@
 }
 
 .downloadApp {
-	display: block;
-	margin-top: 164px;
-	margin-right: 197px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-left: -167px;
+}
+
+.sapiensPhone {
+	margin-left: -251px;
 }
 
 .titleApp {
@@ -204,6 +211,8 @@
 	line-height: 46px;
 	letter-spacing: 0.01em;
 	margin-left: 20px;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 .textApp {
@@ -221,4 +230,154 @@
 	justify-content: space-between;
     width: 284px;
 	margin-left: 83px;
+}
+
+@media (max-width: 1676px) {
+
+	.instruction {
+		padding-left: 556px;
+	}
+
+	.instructionDescription {
+		margin-right: 145px;
+	}
+
+	.instructionTitle {
+		margin-top: 0;
+	}
+
+	.instructionIcon {
+		margin-top: 27px;
+	}
+	
+}
+
+@media (max-width: 1523px) {
+
+	.instructionDescription {
+		margin-right: 63px;
+	}
+
+	.instruction {
+		padding-left: 481px;
+	}
+
+	.sapiens {
+		margin-right: 0;
+	}
+
+}
+
+@media (max-width: 1205px ) {
+
+	.instruction {
+		background-image: none;
+		background-color: #EAF3FA;
+		justify-content: center;
+		padding-left: 0;
+		height: 404px;
+	}
+
+	.instructionDescription {
+		margin-right: 0px;
+	}
+
+	.instructionIcon {
+		margin-top: 1px;
+	}
+
+	.sapiens {
+		margin-right: 0;
+		width: 407px;
+		height: 342px;
+	}
+
+	.titleService {
+		font-weight: 600;
+		font-size: 41px;
+		line-height: 51px;
+		width: 390px;
+		height: 100px;
+	}
+
+	.textService {
+		font-size: 20px;
+		line-height: 25px;
+		width: 390px;
+		height: 100px;
+	}
+
+}
+
+@media (max-width: 1004px ) {
+
+	.instructionDescription {
+		width: 489px;
+	}
+
+	.mobileApp {
+		height: 489px;
+	}
+
+	.ratesCards {
+		width: 100%;
+		height: 803px;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+	}
+
+	.ratesText {
+		margin: 23px auto;
+		width: 100%;
+	}
+
+}
+
+@media (max-width: 831px ) {
+	.service {
+		flex-wrap: wrap;
+	}
+
+	.sapiensPhone {
+		display: none;
+	}
+
+	.downloadApp {
+		margin-left: 0;
+	}
+
+	.instructionDescription {
+		display: none;
+	}
+
+	.titleService {
+		text-align: center;
+	}
+
+	.textService {
+		text-align: center;
+	}
+
+	.title {
+		text-align: center;
+		margin-left: 0;
+	}
+
+	.ratesText p {
+		padding: 0 70px;
+	}
+
+	.titleApp {
+		padding: 0 70px;
+		text-align: center;
+	}
+
+	.textApp {
+		padding: 0 70px;
+	}
+
+	.downloadButtons {
+		display: none;
+	}
 }
