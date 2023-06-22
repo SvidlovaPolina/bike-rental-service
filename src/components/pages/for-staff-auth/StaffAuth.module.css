@@ -1,0 +1,31 @@
+.container {
+    margin: 20px 78px;
+}
+
+.information {
+    display: flex;
+}
+
+.titleInformation {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.textInformation {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 23px;
+    line-height: 30px;
+}
+
+.text a {
+    color: blue;
+}
+
+.text a:hover {
+    color: black;
+}

@@ -66,6 +66,10 @@
 	line-height: 32px;
 }
 
+.navigation a:hover {
+	color: #A63268;
+}
+
 .menu {
 	position: fixed;
 	top: 48px;
