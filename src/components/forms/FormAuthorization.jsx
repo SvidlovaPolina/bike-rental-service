@@ -1,7 +1,12 @@
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { setToken } from '../../store/authSlice'
 import css from './Forms.module.css'
 
 const FormAuthorization = props => {
+
+	const token = useSelector(state => state.auth.token)
+	console.log(token)
 
 	const [values, setValues] = useState({
 		email: '',
@@ -16,7 +21,7 @@ const FormAuthorization = props => {
 	const handleSubmit = e => {
 		e.preventDefault()
 		if (values.email && values.password) {
-			formSubmit(values.email, values.password)
+			SignIn()
 		}
 	}
 
@@ -36,6 +41,7 @@ const FormAuthorization = props => {
 
 		  axios(config)
 			.then(function (response) {
+				// setToken()
   				console.log(JSON.stringify(response.data));
 			})
 			.catch(function (error) {
@@ -43,13 +49,9 @@ const FormAuthorization = props => {
 			});
     }
 
-	const formSubmit = (email, password) => {
-		SignIn()
-	}
-
 	return (
         <div className={css.form}>
-            <form onSubmit={handleSubmit} formSubmit={formSubmit} className={css.formAuthorization}>
+            <form onSubmit={handleSubmit} className={css.formAuthorization}>
                 <p className={css.formName}>Авторизация</p>
 
                 <p className={css.inputText}>E-mail* <input 

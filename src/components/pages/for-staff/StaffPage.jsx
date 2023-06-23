@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import css from './StaffPage.module.css'
 
 function StaffPage() {
+	
+
 	return (
 		<>
 			<div className={css.container}>

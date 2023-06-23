@@ -1,9 +1,12 @@
+import { useSelector } from 'react-redux'
 import css from './Cases.module.css'
 import { Link } from 'react-router-dom'
 
 import React from 'react'
 
 const Cases = () => {
+  const cases = useSelector(state => state.thefts.cases)
+  
   return (
     <>
       <Link to="/staff-auth" className={css.homeLink}>&#8592; Назад</Link>
@@ -51,6 +54,8 @@ const Cases = () => {
           </tbody>
         </table>
         <Link to="/case">Детальная страница кражи</Link>
+
+        <div>{cases}</div>
       </div>
     </>
   )
