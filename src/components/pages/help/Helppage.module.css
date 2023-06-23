@@ -6,7 +6,7 @@
 	font-family: 'Roboto Slab';
 	font-style: normal;
 	font-weight: 700;
-	font-size: 33px;
+	font-size: 24px;
 	line-height: 69px;
 	letter-spacing: 0.01em;
 	height: 60px;
@@ -25,7 +25,7 @@
     font-family: 'Roboto Slab';
     font-style: normal;
     font-weight: 600;
-    font-size: 23px;
+    font-size: 18px;
     line-height: 30px;
     margin: 7px 0;
 }
@@ -35,7 +35,7 @@
     background-color: #EAF3FA;
     border-radius: 20px;
     display: flex;
-    margin: 21px 201px;
+    margin: 17px 60px 17px 225px;
     padding: 0 24px;
 }
 
@@ -43,7 +43,7 @@
     font-family: 'Roboto Slab';
     font-style: normal;
     font-weight: 300;
-    font-size: 20px;
+    font-size: 15px;
     line-height: 28px;
 }
 
@@ -63,7 +63,7 @@
     font-family: 'Roboto Slab';
     font-style: normal;
     font-weight: 500;
-    font-size: 23px;
+    font-size: 18px;
     line-height: 30px;
     margin: 7px 0;
     border: 0;

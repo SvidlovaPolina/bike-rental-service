@@ -17,27 +17,27 @@
 	font-family: 'Roboto Slab';
 	font-style: normal;
 	font-weight: 700;
-	font-size: 55px;
-	line-height: 69px;
+	font-size: 38px;
+	line-height: 47px;
 	letter-spacing: 0.01em;
 	text-transform: uppercase;
 	width: 560px;
-	height: 138px;
+	margin-bottom: 0;
 }
 
 .textService {
 	font-family: 'Roboto Slab';
 	font-style: normal;
 	font-weight: 300;
-	font-size: 24px;
+	font-size: 19px;
 	line-height: 28px;
 	width: 447px;
 	height: 88px;
 }
 
 .sapiens {
-	width: 559px;
-	height: 470px;
+	width: 465px;
+	height: 391px;
 	margin-right: 100px;
 }
 
@@ -49,10 +49,11 @@
 	font-family: 'Roboto Slab';
 	font-style: normal;
 	font-weight: 600;
-	font-size: 35px;
+	font-size: 29px;
 	line-height: 63px;
 	letter-spacing: 0.01em;
 	margin-left: 131px;
+	margin-top: 0;
 }
 
 .instruction {
@@ -61,7 +62,7 @@
 	justify-content: flex-end;
 	align-items: center;
     background-size: cover;
-	height: 572px;
+	height: 443px;
 }
 
 .phone {
@@ -75,19 +76,22 @@
     height: 315px;
     justify-content: space-between;
 	margin-top: 13px;
+	margin-left: -97px;
+	margin-right: 15px;
 }
 
 .instructionTitle {
 	display: flex;
     flex-direction: column;
 	height: 303px;
+	width: 161px;
     justify-content: space-between;
-	margin-left: 20px;
 	margin-top: 10px;
+	padding-top: 24px;
 	font-family: 'Roboto Slab';
 	font-style: normal;
 	font-weight: 700;
-	font-size: 20px;
+	font-size: 16px;
 	line-height: 28px;
 	letter-spacing: 0.01em;
 }
@@ -99,18 +103,18 @@
 .instructionDescription {
 	display: flex;
 	flex-direction: column;
-	height: 329px;
-	width: 726px;
+	height: 324px;
+	width: 585px;
 	justify-content: space-between;
-	margin-left: 40px;
 	font-family: 'Roboto Slab';
 	font-style: normal;
 	font-weight: 300;
-	font-size: 20px;
+	font-size: 17px;
 	line-height: 28px;
 	letter-spacing: 0.01em;
 	margin-right: 254px;
-	margin-top: 4px;
+	margin-top: 17px;
+	margin-left: 30px;
 }
 
 .instructionDescription p {
@@ -126,12 +130,12 @@
     justify-content: space-around;
 	flex-wrap: wrap;
     margin: 0 auto;
-    width: 975px;
+    width: 869px;
 }
 
 .cards {
-	width: 247px;
-	height: 200px;
+	width: 200px;
+	height: 150px;
 	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
 	border-radius: 20px;
 	padding: 22px;
@@ -139,7 +143,7 @@
 	font-family: 'Roboto Slab';
 	font-style: normal;
 	font-weight: 700;
-	font-size: 23px;
+	font-size: 17px;
 	line-height: 37px;
 	letter-spacing: 0.01em;
 }
@@ -165,7 +169,7 @@
 	font-family: 'Roboto Slab';
 	font-style: normal;
 	font-weight: 300;
-	font-size: 22px;
+	font-size: 17px;
 	line-height: 37px;
 	letter-spacing: 0.01em;
 	margin: -15px 0;
@@ -177,37 +181,39 @@
 	font-family: 'Roboto Slab';
 	font-style: normal;
 	font-weight: 300;
-	font-size: 19px;
+	font-size: 16px;
 	line-height: 28px;
 	text-align: center;
 	letter-spacing: 0.01em;
 	margin: 23px auto;
-	width: 917px;
+	width: 740px;
 }
 
 .mobileApp {
 	background-color: #EEDDFF;
 	display: flex;
 	justify-content: center;
-	height: 563px;
+	height: 450px;
 }
 
 .downloadApp {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	margin-left: -167px;
+	margin-left: -88px;
+	margin-right: 247px;
 }
 
 .sapiensPhone {
-	margin-left: -251px;
+	width: 534px;
+	height: 463px;
 }
 
 .titleApp {
 	font-family: 'Roboto Slab';
 	font-style: normal;
 	font-weight: 700;
-	font-size: 32px;
+	font-size: 27px;
 	line-height: 46px;
 	letter-spacing: 0.01em;
 	margin-left: 20px;
@@ -219,7 +225,7 @@
 	font-family: 'Roboto Slab';
 	font-style: normal;
 	font-weight: 300;
-	font-size: 23px;
+	font-size: 19px;
 	line-height: 34px;
 	text-align: center;
 	letter-spacing: 0.01em;
@@ -229,7 +235,7 @@
 	display: flex;
 	justify-content: space-between;
     width: 284px;
-	margin-left: 83px;
+	margin-left: 52px;
 }
 
 @media (max-width: 1676px) {

@@ -29,7 +29,7 @@ const FormReport = () => {
 				<p className={css.inputText}>Цвет велосипеда <input 
 				className={css.input}
 				type="text" 
-				name="" 
+				name="color" 
 				placeholder="">
 				</input></p>
 

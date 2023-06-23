@@ -15,7 +15,7 @@ const FormAuthorization = props => {
 
 	const handleSubmit = e => {
 		e.preventDefault()
-		if (values.email) {
+		if (values.email && values.password) {
 			formSubmit(values.email, values.password)
 		}
 	}
@@ -29,8 +29,8 @@ const FormAuthorization = props => {
 			url: 'https://sf-final-project-be.herokuapp.com/api/auth/sign_in',
 			headers: { },
 			data : {
-				"email": "polina5523312@gmail.com",
-				"password": "5523312",
+				"email": values.email,
+				"password": values.password,
 			}
 		  };
 
@@ -44,7 +44,6 @@ const FormAuthorization = props => {
     }
 
 	const formSubmit = (email, password) => {
-		console.log('ok')
 		SignIn()
 	}
 
