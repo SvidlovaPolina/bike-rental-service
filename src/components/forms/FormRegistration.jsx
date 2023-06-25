@@ -59,7 +59,6 @@ const FormRegistration = () => {
 
                 <p className={css.inputText}>E-mail* <input 
 				className={css.input}
-				// id='auth'
 				type='email'
 				name='Email'
 				placeholder='E-mail'
@@ -69,7 +68,6 @@ const FormRegistration = () => {
 						
 				<p className={css.inputText}>Пароль* <input 
 				className={css.input}
-				// id='pass'
 				type='password'
 				name='Password'
 				placeholder='Введите пароль'
@@ -79,7 +77,6 @@ const FormRegistration = () => {
 
 				<p className={css.inputText}>Имя <input 
 				className={css.input}
-				// id='firstname'
 				type='text'
 				name='FirstName'
 				placeholder=''
@@ -89,7 +86,6 @@ const FormRegistration = () => {
 
 				<p className={css.inputText}>Фамилия <input 
 				className={css.input}
-				// id='lastname'
 				type='text'
 				name='LastName'
 				placeholder=''
@@ -99,7 +95,6 @@ const FormRegistration = () => {
 
 				<p className={css.inputText}>Client ID* <input 
 				className={css.input}
-				// id='clientid'
 				type='text'
 				name='ClientId'
 				placeholder=''

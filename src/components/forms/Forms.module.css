@@ -87,6 +87,11 @@
 	margin-bottom: 24px;
 }
 
+.submit:hover {
+	cursor: pointer;
+	background: #d6b9f3;
+}
+
 .select {
 	display: block;
 	padding: 8px;

@@ -49,6 +49,8 @@ const FormAuthorization = props => {
 			});
     }
 
+	// 1ce988f9-a327-4c5e-b749-4ba64ca7ea9b
+
 	return (
         <div className={css.form}>
             <form onSubmit={handleSubmit} className={css.formAuthorization}>
@@ -56,7 +58,6 @@ const FormAuthorization = props => {
 
                 <p className={css.inputText}>E-mail* <input 
 				className={css.input}
-				id='auth'
 				type='email'
 				name='email'
 				placeholder='E-mail'
@@ -65,8 +66,6 @@ const FormAuthorization = props => {
 				</input></p>
 						
 				<p className={css.inputText}>Пароль* <input 
-				className={css.input}
-				id='pass'
 				type='password'
 				name='password'
 				placeholder='Введите пароль'
