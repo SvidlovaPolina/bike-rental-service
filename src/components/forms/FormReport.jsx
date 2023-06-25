@@ -1,30 +1,48 @@
-import { useState } from 'react'
+// import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import css from './Forms.module.css'
 
 const FormReport = () => {
 
-	const [values, setValues] = useState({
-		licenseNumber: '',
-		ownerFullName: '',
-		type: '',
-		clientId: '',
-		color: '',
-		date: '',
-		description: '',
-		// officer: ''
+	const {
+		register,
+		formState: {
+			errors,
+			isValid
+		},
+		handleSubmit,
+		reset,
+		values,
+	} = useForm({
+		mode: 'onBlur',
 	})
 
-	const handleChange = e => {
-		const fieldName = e.target.name
-		setValues({...values, [fieldName]: e.target.value})
+	// const [values, setValues] = useState({
+	// 	licenseNumber: '',
+	// 	ownerFullName: '',
+	// 	type: '',
+	// 	clientId: '',
+	// 	color: '',
+	// 	date: '',
+	// 	description: '',
+	// 	// officer: ''
+	// })
+
+	const onSumbit = (data) => {
+		alert(JSON.stringify(data));
+		Report();
+		reset()
 	}
 
-	const handleSubmit = e => {
-		e.preventDefault()
-		if (values.licenseNumber && values.ownerFullName && values.clientId && values.type) {
-			Report()
-		}
-	}
+	// const data = {
+	// 	"licenseNumber": values.licenseNumber,
+	// 	"ownerFullName": values.ownerFullName,
+	// 	"type": values.type,
+	// 	"clientId": values.clientId,
+	// 	"color": values.color,
+	// 	"date": values.date,
+	// 	"description": values.description
+	// }
 
 	const Report = () => {
 		let axios = require('axios');
@@ -34,7 +52,7 @@ const FormReport = () => {
 		  maxBodyLength: Infinity,
 		  url: 'https://sf-final-project-be.herokuapp.com/api/public/report',
 		  headers: { },
-		  data : {
+		  data: {
 			"licenseNumber": values.licenseNumber,
 			"ownerFullName": values.ownerFullName,
 			"type": values.type,
@@ -58,73 +76,80 @@ const FormReport = () => {
 
     return (
         <div className={css.form}>
-            <form onSubmit={handleSubmit} className={css.formReport}>
+            <form onSubmit={handleSubmit(onSumbit)} className={css.formReport}>
                 <p className={css.formName}>Сообщить о краже</p>
 
-                <p className={css.inputText}>Номер лицензии* <input 
+                <label className={css.inputText}>Номер лицензии* <input 
 				className={css.input}
-				type='text'
-				name='licenseNumber'
-				placeholder='12 символов'
-				onChange={handleChange}
-				value={values.licenseNumber}>
-				</input></p>
+				placeholder='5 символов'
+				{...register('licenseNumber', {
+					required: "Поле обязательно к заполнению",
+					minLength: {
+						value: 5,
+						message: 'Минимум 5 символов'
+					}
+				})}>
+				</input>
+				<div className={css.error}>{errors?.licenseNumber && <p>{errors?.licenseNumber?.message || "Error!"}</p>}</div></label>
 						
-				<p className={css.inputText}>ФИО* <input 
+				<label className={css.inputText}>ФИО* <input 
 				className={css.input}
-				type='text'
-				name='ownerFullName'
 				placeholder=''
-				onChange={handleChange}
-				value={values.ownerFullName}>
-				</input></p>
+				{...register('ownerFullName', {
+					required: "Поле обязательно к заполнению",
+				})}>
+				</input>
+				<div className={css.error}>{errors?.ownerFullName && <p>{errors?.ownerFullName?.message || "Error!"}</p>}</div></label>
 
-				<p className={css.inputText}>Client ID* <input 
+				<label className={css.inputText}>Client ID* <input 
 				className={css.input}
-				type='text'
-				name='clientId'
 				placeholder=''
-				onChange={handleChange}
-				value={values.clientId}>
-				</input></p>
+				{...register('clientId', {
+					required: "Поле обязательно к заполнению",
+					minLength: {
+						value: 36,
+						message: 'Подсказка: 1ce988f9-a327-4c5e-b749-4ba64ca7ea9b'
+					}
+				})}>
+				</input>
+				<div className={css.error}>{errors?.clientId && <p>{errors?.clientId?.message || "Error!"}</p>}</div></label>
 
-				<p className={css.inputText}>Тип велосипеда <select 
+				<label className={css.inputText}>Тип велосипеда <select 
                 className={css.select} 
 				name='type'
-				defaultValue='general'
-				onChange={handleChange}>
+				defaultValue='general'>
                     <option value='general'>general</option>
                     <option value='sport'>sport</option>
-                </select></p>
+                </select></label>
 
-				<p className={css.inputText}>Цвет велосипеда <input 
+				{/* <label className={css.inputText}>Цвет велосипеда <input 
 				className={css.input}
 				type='text'
 				name='color'
 				placeholder=''
 				onChange={handleChange}
 				value={values.color}>
-				</input></p>
+				</input></label>
 
-				<p className={css.inputText}>Дата кражи <input 
+				<label className={css.inputText}>Дата кражи <input 
 				className={css.input}
 				type='date'
 				name='date'
 				placeholder=''
 				onChange={handleChange}
 				value={values.date}>
-				</input></p>
+				</input></label>
 
-                <p className={css.inputText}>Дополнительная информация <textarea 
+                <label className={css.inputText}>Дополнительная информация <textarea 
 				className={css.input}
 				type='text'
 				name='description'
 				placeholder=''
 				onChange={handleChange}
 				value={values.description}>
-				</textarea></p>
+				</textarea></label> */}
 
-				<button className={css.submit} type='submit'>Отправить</button>
+				<button className={css.submit} type='submit' disabled={!isValid}>Отправить</button>
 			</form>
 		</div>
     )
