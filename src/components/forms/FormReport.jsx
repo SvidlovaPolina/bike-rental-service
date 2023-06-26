@@ -1,4 +1,4 @@
-// import { useState } from 'react'
+import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import css from './Forms.module.css'
 
@@ -12,55 +12,23 @@ const FormReport = () => {
 		},
 		handleSubmit,
 		reset,
-		values,
 	} = useForm({
 		mode: 'onBlur',
 	})
 
-	// const [values, setValues] = useState({
-	// 	licenseNumber: '',
-	// 	ownerFullName: '',
-	// 	type: '',
-	// 	clientId: '',
-	// 	color: '',
-	// 	date: '',
-	// 	description: '',
-	// 	// officer: ''
-	// })
-
 	const onSumbit = (data) => {
-		alert(JSON.stringify(data));
-		Report();
+		Report(data);
 		reset()
 	}
 
-	// const data = {
-	// 	"licenseNumber": values.licenseNumber,
-	// 	"ownerFullName": values.ownerFullName,
-	// 	"type": values.type,
-	// 	"clientId": values.clientId,
-	// 	"color": values.color,
-	// 	"date": values.date,
-	// 	"description": values.description
-	// }
-
-	const Report = () => {
-		let axios = require('axios');
+	const Report = (data) => {
 
 		let config = {
 		  method: 'post',
 		  maxBodyLength: Infinity,
 		  url: 'https://sf-final-project-be.herokuapp.com/api/public/report',
 		  headers: { },
-		  data: {
-			"licenseNumber": values.licenseNumber,
-			"ownerFullName": values.ownerFullName,
-			"type": values.type,
-			"clientId": values.clientId,
-			"color": values.color,
-			"date": values.date,
-			"description": values.description
-		  }
+		  data: data
 		};
 		
 		axios(config)
@@ -81,6 +49,7 @@ const FormReport = () => {
 
                 <label className={css.inputText}>Номер лицензии* <input 
 				className={css.input}
+				type='text'
 				placeholder='5 символов'
 				{...register('licenseNumber', {
 					required: "Поле обязательно к заполнению",
@@ -94,6 +63,7 @@ const FormReport = () => {
 						
 				<label className={css.inputText}>ФИО* <input 
 				className={css.input}
+				type='text'
 				placeholder=''
 				{...register('ownerFullName', {
 					required: "Поле обязательно к заполнению",
@@ -103,6 +73,7 @@ const FormReport = () => {
 
 				<label className={css.inputText}>Client ID* <input 
 				className={css.input}
+				type='text'
 				placeholder=''
 				{...register('clientId', {
 					required: "Поле обязательно к заполнению",
@@ -114,40 +85,36 @@ const FormReport = () => {
 				</input>
 				<div className={css.error}>{errors?.clientId && <p>{errors?.clientId?.message || "Error!"}</p>}</div></label>
 
-				<label className={css.inputText}>Тип велосипеда <select 
-                className={css.select} 
-				name='type'
+				<label className={css.inputText}>Тип велосипеда* <select 
+                className={css.select}
+				{...register('type', {
+					required: "Выберите тип"
+				})}
 				defaultValue='general'>
                     <option value='general'>general</option>
                     <option value='sport'>sport</option>
                 </select></label>
 
-				{/* <label className={css.inputText}>Цвет велосипеда <input 
+				<label className={css.inputText}>Цвет велосипеда <input 
 				className={css.input}
 				type='text'
-				name='color'
 				placeholder=''
-				onChange={handleChange}
-				value={values.color}>
+				{...register('color')}>
 				</input></label>
 
 				<label className={css.inputText}>Дата кражи <input 
 				className={css.input}
 				type='date'
-				name='date'
-				placeholder=''
-				onChange={handleChange}
-				value={values.date}>
+				{...register('date')}>
 				</input></label>
 
                 <label className={css.inputText}>Дополнительная информация <textarea 
 				className={css.input}
 				type='text'
-				name='description'
 				placeholder=''
-				onChange={handleChange}
-				value={values.description}>
-				</textarea></label> */}
+				{...register('description')}>
+				</textarea></label>
+
 
 				<button className={css.submit} type='submit' disabled={!isValid}>Отправить</button>
 			</form>

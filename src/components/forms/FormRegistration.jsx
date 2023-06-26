@@ -31,7 +31,9 @@ const FormRegistration = () => {
 			method: 'post',
 			maxBodyLength: Infinity,
 			url: 'https://sf-final-project-be.herokuapp.com/api/auth/sign_up',
-			headers: { },
+			headers: { 
+				"content-type": "application/json"
+			},
 			data : {
 				"email": values.Email,
 				"password": values.Password,

@@ -32,7 +32,9 @@ const FormAuthorization = props => {
 			method: 'post',
 		  	maxBodyLength: Infinity,
 			url: 'https://sf-final-project-be.herokuapp.com/api/auth/sign_in',
-			headers: { },
+			headers: { 
+				"content-type": "application/json"
+			},
 			data : {
 				"email": values.email,
 				"password": values.password,

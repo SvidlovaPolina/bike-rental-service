@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import axios from 'axios';
 import { Provider } from 'react-redux'
 import store from './store';
 import './index.css';
@@ -7,6 +8,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+axios.defaults.headers.common['Accept'] = 'application/json';
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>
