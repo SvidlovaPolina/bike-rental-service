@@ -1,46 +1,34 @@
-import { useState } from 'react'
+import axios from 'axios'
+import { useForm } from 'react-hook-form'
 import css from './Forms.module.css'
 
 const FormRegistration = () => {
 
-	const [values, setValues] = useState({
-		Email: '',
-		Password: '',
-		ClientId: '',
-		FirstName: '',
-		LastName: '',
-		// approved: ''
+	const {
+		register,
+		formState: {
+			errors,
+			isValid
+		},
+		handleSubmit,
+		reset,
+	} = useForm({
+		mode: 'onBlur',
 	})
 
-	const handleChange = e => {
-		const fieldName = e.target.name
-		setValues({...values, [fieldName]: e.target.value})
+	const onSumbit = (data) => {
+		SignUp(data);
+		reset()
 	}
 
-	const handleSubmit = e => {
-		e.preventDefault()
-		if (values.Email && values.Password && values.ClientId) {
-			SignUp()
-		}
-	}
-
-	const SignUp = () => {
-		let axios = require('axios');
+	const SignUp = (data) => {
 
 		let config = {
 			method: 'post',
 			maxBodyLength: Infinity,
 			url: 'https://sf-final-project-be.herokuapp.com/api/auth/sign_up',
-			headers: { 
-				"content-type": "application/json"
-			},
-			data : {
-				"email": values.Email,
-				"password": values.Password,
-				"firstName": values.FirstName,
-				"lastName": values.LastName,
-				"clientId": values.ClientId	
-			}
+			headers: { },
+			data : data
 		};
 
 		// 1ce988f9-a327-4c5e-b749-4ba64ca7ea9b
@@ -56,55 +44,64 @@ const FormRegistration = () => {
 
 	return (
         <div className={css.form}>
-            <form onSubmit={handleSubmit} className={css.formRegistration}>
+            <form onSubmit={handleSubmit(onSumbit)} className={css.formRegistration}>
                 <p className={css.formName}>Регистрация</p>
 
-                <p className={css.inputText}>E-mail* <input 
+                <label className={css.inputText}>E-mail* <input 
 				className={css.input}
 				type='email'
-				name='Email'
 				placeholder='E-mail'
-				value={values.Email}
-				onChange={handleChange}>
-				</input></p>
+				{...register('email', {
+					required: "Поле обязательно к заполнению",
+				})}>
+				</input>
+				<div className={css.error}>{errors?.email && <p>{errors?.email?.message || "Error!"}</p>}</div></label>
 						
-				<p className={css.inputText}>Пароль* <input 
+				<label className={css.inputText}>Пароль* <input 
 				className={css.input}
 				type='password'
-				name='Password'
 				placeholder='Введите пароль'
-				value={values.Password}
-				onChange={handleChange}>
-				</input></p>
+				{...register('password', {
+					required: "Поле обязательно к заполнению",
+					minLength: {
+						value: 8,
+						message: 'Минимум 8 символов'
+					}
+				})}>
+				</input>
+				<div className={css.error}>{errors?.password && <p>{errors?.password?.message || "Error!"}</p>}</div></label>
 
-				<p className={css.inputText}>Имя <input 
+				<label className={css.inputText}>Имя <input 
 				className={css.input}
 				type='text'
-				name='FirstName'
 				placeholder=''
-				value={values.FirstName}
-				onChange={handleChange}>
-				</input></p>
+				{...register('firstName')}>
+				</input>
+				<div className={css.error}>{errors?.firstName && <p>{errors?.firstName?.message || "Error!"}</p>}</div></label>
 
-				<p className={css.inputText}>Фамилия <input 
+				<label className={css.inputText}>Фамилия <input 
 				className={css.input}
 				type='text'
-				name='LastName'
 				placeholder=''
-				value={values.LastName}
-				onChange={handleChange}>
-				</input></p>
+				{...register('lastName')}>
+				</input>
+				<div className={css.error}>{errors?.lastName && <p>{errors?.lastName?.message || "Error!"}</p>}</div></label>
 
-				<p className={css.inputText}>Client ID* <input 
+				<label className={css.inputText}>Client ID* <input 
 				className={css.input}
 				type='text'
-				name='ClientId'
 				placeholder=''
-				value={values.ClientId}
-				onChange={handleChange}>
-				</input></p>
+				{...register('clientId', {
+					required: "Поле обязательно к заполнению",
+					minLength: {
+						value: 36,
+						message: 'Подсказка: 1ce988f9-a327-4c5e-b749-4ba64ca7ea9b'
+					}
+				})}>
+				</input>
+				<div className={css.error}>{errors?.clientId && <p>{errors?.clientId?.message || "Error!"}</p>}</div></label>
 
-				<button className={css.submit} type='submit'>Зарегистрироваться</button>
+				<button className={css.submit} type='submit' disabled={!isValid}>Зарегистрироваться</button>
 			</form>
 		</div>
     )
