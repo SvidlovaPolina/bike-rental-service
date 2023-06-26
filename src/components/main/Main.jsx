@@ -20,10 +20,10 @@ const Main = (props) => {
 				<Route path="/" element={<PageLayout />} />
 				<Route path="/help" element={<HelpPage />} />
 				<Route path="/staff" element={<StaffPage />} />
+				<Route path="/staff-auth" element={<StaffAuth />} />
 				<Route path="/registration" element={<RegistrationPage />} />
 				<Route path="/authorization" element={<AuthorizationPage />} />
 				<Route path="/report" element={<ReportPage />} />
-				<Route path="/staff-auth" element={<StaffAuth />} />
 				<Route path="/cases" element={<Cases />} />
 				<Route path="/employees" element={<Employees />} />
 				<Route path="/employee-detail" element={<EmployeeDetail />} />

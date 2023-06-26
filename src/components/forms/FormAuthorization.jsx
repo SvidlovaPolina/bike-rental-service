@@ -38,7 +38,8 @@ const FormAuthorization = () => {
 
 		axios(config)
 		  .then(function (response) {
-		  console.log(JSON.stringify(response.data));
+			window.localStorage.setItem('token', response.data.data.token)
+		  console.log(response);
 	  		})
 	  	.catch(function (error) {
 		  console.log(error);
