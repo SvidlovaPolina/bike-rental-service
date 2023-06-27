@@ -3,13 +3,9 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 
-const Employees = props => {
+const Employees = () => {
 
-  const [ staff, setStaff ] = useState({
-    officers: null,
-  })
-
-  // const { officers } = props
+  const [ staff, setStaff ] = useState([])
 
   useEffect(() => {
 
@@ -18,24 +14,20 @@ const Employees = props => {
       maxBodyLength: Infinity,
       url: 'https://sf-final-project-be.herokuapp.com/api/officers/',
       headers: {
-        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTk3MWFmMWUzNmZjOWU2ODAzYTg1NSIsImlhdCI6MTY4Nzc5NTk0OSwiZXhwIjoxNjg4NDAwNzQ5fQ.ASkcti4eR3MKD71njRriCgX0L8b6uiNQMLP5PJiF8vE"
+        "authorization": `Bearer ${window.localStorage.getItem('token')}`
        }
     };
-
+    
     axios(config)
     .then(function (response) {
-      // console.log(response);
-      const allPersons = response.data.officers;
-      // setStaff({
-      //   officers: allPersons,
-      // })
-      staff.officers = allPersons
+      setStaff(response.data.officers)
       console.log(staff.officers)
     })
+
     .catch(function (error) {
       console.log(error);
     });
-  }, [setStaff])
+  }, [staff.officers])
 
   return (
     <>
@@ -52,7 +44,7 @@ const Employees = props => {
               </tr>
             </thead>
             <tbody>
-              {staff.officers.map((officer) => 
+              {staff.map((officer) => 
                 <tr key={officer._id}>
                   <td>{officer._id}</td>
                   <td>{officer.firstName}</td>
@@ -70,5 +62,3 @@ const Employees = props => {
 }
 
 export default Employees
-
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTk3MWFmMWUzNmZjOWU2ODAzYTg1NSIsImlhdCI6MTY4Nzc5NTk0OSwiZXhwIjoxNjg4NDAwNzQ5fQ.ASkcti4eR3MKD71njRriCgX0L8b6uiNQMLP5PJiF8vE
