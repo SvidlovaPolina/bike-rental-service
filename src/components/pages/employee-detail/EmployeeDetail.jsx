@@ -1,10 +1,12 @@
 import css from './EmployeeDetail.module.css'
-import { Link } from 'react-router-dom'
+import { Link, useResolvedPath } from 'react-router-dom'
 import Avatar from '../../../assets/avatar.jpg'
 
-import React from 'react'
-
 const EmployeeDetail = () => {
+
+  const match = useResolvedPath('')
+  console.log(match.pathname.split(':')[1])
+
   return (
     <>
       <Link to='/employees'className={css.homeLink}>&#8592; Назад</Link>
@@ -15,7 +17,7 @@ const EmployeeDetail = () => {
             <thead>
               <tr>
                 <th>Имя</th>
-                <td>Полина</td>
+                <td contenteditable="true">Полина</td>
               </tr>
             </thead>
             <tbody>
