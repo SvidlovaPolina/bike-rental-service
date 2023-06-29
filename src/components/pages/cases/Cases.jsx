@@ -1,26 +1,52 @@
 import css from './Cases.module.css'
 import { Link } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import { removeCase, addCase } from '../../../store/caseSlice'
-import { useEffect } from 'react'
+import axios from 'axios'
+import { useState, useEffect } from 'react'
 import clsx from 'clsx'
 
 const Cases = () => {
-
-  const dispatch = useDispatch();
-
-  const cases = useSelector(state => state.cases.cases)
-  console.log(cases)
+  const [ thefts, setThefts ] = useState([])
 
   useEffect(() => {
-    dispatch(addCase())
-  }, [cases])
-  
-  const DeleteCase = (id) => {
-    let result = dispatch(removeCase({ id }))
-		console.log(result)
-  }
+    let config = {
+      method: 'get',
+      maxBodyLength: Infinity,
+      url: 'https://sf-final-project-be.herokuapp.com/api/cases/',
+      headers: {
+        "authorization": `Bearer ${window.localStorage.getItem('token')}`
+       }
+    };
+    
+    axios(config)
+    .then(function (response) {
+      setThefts(response.data.data)
+    })
 
+    .catch(function (error) {
+      console.log(error);
+    });
+  }, [thefts.data])
+
+  const DeleteTheft = (id) => {
+    console.log(id)
+    let config = {
+      method: 'delete',
+      maxBodyLength: Infinity,
+      url: 'https://sf-final-project-be.herokuapp.com/api/cases/' + id,
+      headers: { 
+        "authorization": `Bearer ${window.localStorage.getItem('token')}`
+      },
+    };
+    
+    axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+  
   return (
     <>
       <Link to="/staff" className={css.homeLink}>&#8592; Назад</Link>
@@ -37,7 +63,7 @@ const Cases = () => {
             </tr>
           </thead>
           <tbody>
-          {cases.map((data) => 
+          {thefts.map((data) => 
                 <tr key={data._id}>
                   <td>{data.licenseNumber}</td>
                   <td>{data.type}</td>
@@ -48,7 +74,7 @@ const Cases = () => {
                   <Link to={`/cases/:${data._id}`} key={data._id}>
                     <button className={clsx(css.button, css.additional)}>Дополнительно</button>
                   </Link>
-                    <button className={clsx(css.button, css.delete)} onClick={(e) => {DeleteCase(data._id)}}>Удалить</button>
+                    <button className={clsx(css.button, css.delete)} onClick={(e) => {DeleteTheft(data._id)}}>Удалить</button>
                   </td>
                 </tr>
               )}
