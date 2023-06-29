@@ -1,13 +1,8 @@
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
-// import { useSelector } from 'react-redux'
-// import { setToken } from '../../store/authSlice'
 import css from './Forms.module.css'
 
 const FormAuthorization = () => {
-
-	// const token = useSelector(state => state.auth.token)
-	// console.log(token)
 
 	const {
 		register,

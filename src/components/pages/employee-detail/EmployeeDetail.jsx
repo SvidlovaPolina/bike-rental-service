@@ -4,7 +4,7 @@ import Avatar from '../../../assets/avatar.jpg'
 
 const EmployeeDetail = () => {
 
-  const match = useResolvedPath('')
+  const match = useResolvedPath('staffId')
   console.log(match.pathname.split(':')[1])
 
   return (
@@ -17,7 +17,8 @@ const EmployeeDetail = () => {
             <thead>
               <tr>
                 <th>Имя</th>
-                <td contenteditable="true">Полина</td>
+                <td>Полина</td>
+                {/* <td contentEditable="true">Полина</td> */}
               </tr>
             </thead>
             <tbody>

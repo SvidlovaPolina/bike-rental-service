@@ -2,6 +2,7 @@ import css from './Employees.module.css'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import clsx from 'clsx'
 
 const Employees = () => {
   const [ staff, setStaff ] = useState([])
@@ -19,7 +20,6 @@ const Employees = () => {
     axios(config)
     .then(function (response) {
       setStaff(response.data.officers)
-      // console.log(staff.officers)
     })
 
     .catch(function (error) {
@@ -29,7 +29,7 @@ const Employees = () => {
 
 
   const DeleteStaff = (id) => {
-    console.log(id)
+    // console.log(id)
     let config = {
       method: 'delete',
       maxBodyLength: Infinity,
@@ -37,16 +37,11 @@ const Employees = () => {
       headers: { 
         "authorization": `Bearer ${window.localStorage.getItem('token')}`
       },
-      // params: {
-      //   id
-      // }
     };
     
     axios(config)
     .then(function (response) {
       console.log(JSON.stringify(response.data));
-      // staff.find()
-      // setStaff()
     })
     .catch(function (error) {
       console.log(error);
@@ -55,28 +50,33 @@ const Employees = () => {
 
   return (
     <>
-      <Link to="/staff-auth" className={css.homeLink}>&#8592; Назад</Link>
+      <Link to="/staff" className={css.homeLink}>&#8592; Назад</Link>
       <div className={css.container}>
         <table>
           <thead>
             <tr>
-                <th>#</th>
                 <th>Имя</th>
                 <th>Фамилия</th>
                 <th>E-mail</th>
+                <th>Идентификатор сотрудника</th>
                 <th>Одобрен</th>
-                <th>Удаление</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
               {staff.map((officer) => 
                   <tr key={officer._id}>
-                      <td><Link to={`/employees/:${officer._id}`} key={officer._id}>{officer._id}</Link></td>
                       <td>{officer.firstName}</td>
                       <td>{officer.lastName}</td>
                       <td>{officer.email}</td>
+                      <td>{officer._id}</td>
                       <td>{officer.approved ? 'Да' : 'Нет'}</td>
-                    <td><button className={css.button} onClick={(e) => {DeleteStaff(officer._id)}}>Удалить</button></td>
+                    <td>
+                      <Link to={`/employees/:${officer._id}`} key={officer._id}>
+                        <button className={clsx(css.button, css.additional)}>Дополнительно</button>
+                      </Link>
+                      <button className={clsx(css.button, css.delete)} onClick={(e) => {DeleteStaff(officer._id)}}>Удалить</button>
+                    </td>
                   </tr>
               )}
             </tbody>

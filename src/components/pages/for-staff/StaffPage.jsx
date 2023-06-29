@@ -53,7 +53,6 @@ function StaffPage() {
 				: 
 				(<div className={css.container}>
 					<p className={css.forStaffText}>Эта страница доступна только авторизованным сотрудникам сервиса Bikee.<br />Пожалуйста, <Link to="/authorization">войдите</Link> или <Link to="/registration">зарегистрируйтесь</Link>.</p>
-					<Link to="/staff-auth">Авторизованным сотрудникам</Link>
 				</div>)
 			}
 		</>

@@ -6,7 +6,6 @@ import RegistrationPage from '../pages/registration/RegistrationPage'
 import AuthorizationPage from '../pages/authorization/AuthorizationPage'
 import ReportPage from '../pages/report-a-theft/ReportPage'
 import css from './Main.module.css'
-import StaffAuth from '../pages/for-staff-auth/StaffAuth'
 import Cases from '../pages/cases/Cases'
 import Employees from '../pages/employees/Employees'
 import EmployeeDetail from '../pages/employee-detail/EmployeeDetail'
@@ -20,14 +19,13 @@ const Main = (props) => {
 				<Route path="/" element={<PageLayout />} />
 				<Route path="/help" element={<HelpPage />} />
 				<Route path="/staff" element={<StaffPage />} />
-				<Route path="/staff-auth" element={<StaffAuth />} />
 				<Route path="/registration" element={<RegistrationPage />} />
 				<Route path="/authorization" element={<AuthorizationPage />} />
 				<Route path="/report" element={<ReportPage />} />
 				<Route path="/cases" element={<Cases />} />
 				<Route path="/employees" element={<Employees />} />
 				<Route path={'/employees/:staffId'} element={<EmployeeDetail />} />
-				<Route path="/case" element={<CaseDetail />} />
+				<Route path="/cases/:caseId" element={<CaseDetail />} />
 			</Routes>
 		</main>
 		</>

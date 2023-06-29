@@ -1,8 +1,12 @@
 import React from 'react'
 import css from './CaseDetail.module.css'
-import { Link } from 'react-router-dom'
+import { Link, useResolvedPath } from 'react-router-dom'
 
 const CaseDetail = () => {
+
+  const match = useResolvedPath('caseId')
+  console.log(match.pathname.split(':')[1])
+
   return (
     <>
       <Link to='/cases' className={css.homeLink}>&#8592; Назад</Link>
