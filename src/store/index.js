@@ -4,7 +4,7 @@ import authReducer from './authSlice'
 
 export default configureStore({
     reducer: {
-        thefts: caseReducer,
+        cases: caseReducer,
         auth: authReducer
     }
 });

@@ -31,6 +31,7 @@ function StaffPage() {
 		  		})
 		  	.catch(function (error) {
 			  console.log(error);
+			  // дойти до сообщения ошибки "ERR"
 		  	});
 		}
 	}, [setAuth])
