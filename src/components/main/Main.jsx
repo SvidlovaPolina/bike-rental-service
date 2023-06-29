@@ -23,9 +23,9 @@ const Main = (props) => {
 				<Route path="/authorization" element={<AuthorizationPage />} />
 				<Route path="/report" element={<ReportPage />} />
 				<Route path="/cases" element={<Cases />} />
+				<Route path="/cases/:caseId" element={<CaseDetail />} />
 				<Route path="/employees" element={<Employees />} />
 				<Route path={'/employees/:staffId'} element={<EmployeeDetail />} />
-				<Route path="/cases/:caseId" element={<CaseDetail />} />
 			</Routes>
 		</main>
 		</>

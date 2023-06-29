@@ -1,8 +1,11 @@
-import axios from 'axios'
 import { useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
+import { signUp } from '../../store/authSlice'
 import css from './Forms.module.css'
 
 const FormRegistration = () => {
+
+	const dispatch = useDispatch();
 
 	const {
 		register,
@@ -17,29 +20,15 @@ const FormRegistration = () => {
 	})
 
 	const onSumbit = (data) => {
-		SignUp(data);
+		let result = dispatch(signUp({ data }))
+		console.log(result)
+		/*if(result.payload.result.status){
+			// перенаправить на страничку авториазции AuthorizationPage (/authorization)
+		} else{
+			// вывести сообщение, что не удалось зарегестрироваться
+			alert(result.payload.result.message);
+		}*/
 		reset()
-	}
-
-	const SignUp = (data) => {
-
-		let config = {
-			method: 'post',
-			maxBodyLength: Infinity,
-			url: 'https://sf-final-project-be.herokuapp.com/api/auth/sign_up',
-			headers: { },
-			data : data
-		};
-
-		// 1ce988f9-a327-4c5e-b749-4ba64ca7ea9b
-
-		axios(config)
-			.then(function (response) {
-			console.log(JSON.stringify(response.data));
-		})
-		.catch(function (error) {
-			console.log(error);
-		});
 	}
 
 	return (

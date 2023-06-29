@@ -1,8 +1,11 @@
-import axios from 'axios'
 import { useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
+import { signIn } from '../../store/authSlice'
 import css from './Forms.module.css'
 
 const FormAuthorization = () => {
+
+	const dispatch = useDispatch();
 
 	const {
 		register,
@@ -17,31 +20,16 @@ const FormAuthorization = () => {
 	})
 
 	const onSumbit = (data) => {
-		SignIn(data);
+		let result = dispatch(signIn({ data }))
+		console.log(result)
+		/*if(result.payload.result.status){
+			// перенаправить на страничку StaffPage (/staff)
+		} else{
+			// вывести сообщение из ошибки (почему не удалось авторизоваться)
+			alert(result.payload.result.message);
+		}*/
 		reset()
 	}
-
-	const SignIn = (data) => {
-
-		let config = {
-			method: 'post',
-		  	maxBodyLength: Infinity,
-			url: 'https://sf-final-project-be.herokuapp.com/api/auth/sign_in',
-			headers: { 	},
-			data : data
-		};
-
-		axios(config)
-		  .then(function (response) {
-			window.localStorage.setItem('token', response.data.data.token)
-		  console.log(response);
-	  		})
-	  	.catch(function (error) {
-		  console.log(error);
-	  	});
-    }
-
-	// 1ce988f9-a327-4c5e-b749-4ba64ca7ea9b
 
 	return (
         <div className={css.form}>
