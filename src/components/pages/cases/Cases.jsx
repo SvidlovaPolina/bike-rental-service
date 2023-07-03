@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { axiosCases } from '../../../store/caseSlice'
+import { deleteCase } from '../../../store/caseSlice'
 import clsx from 'clsx'
 
 const Cases = () => {
@@ -14,26 +15,6 @@ const Cases = () => {
   useEffect(() => {
     dispatch(axiosCases())
   }, [dispatch])
-
-  // const DeleteTheft = (id) => {
-  //   console.log(id)
-  //   let config = {
-  //     method: 'delete',
-  //     maxBodyLength: Infinity,
-  //     url: 'https://sf-final-project-be.herokuapp.com/api/cases/' + id,
-  //     headers: { 
-  //       "authorization": `Bearer ${window.localStorage.getItem('token')}`
-  //     },
-  //   };
-    
-  //   axios(config)
-  //   .then(function (response) {
-  //     console.log(JSON.stringify(response.data));
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
-  // }
   
   return (
     <>
@@ -66,8 +47,7 @@ const Cases = () => {
                   <Link to={`/cases/:${data._id}`} key={data._id}>
                     <button className={clsx(css.button, css.additional)}>Дополнительно</button>
                   </Link>
-                    <button className={clsx(css.button, css.delete)}>Удалить</button>
-                    {/* onClick={(e) => {DeleteTheft(data._id)}} */}
+                    <button className={clsx(css.button, css.delete)} onClick={() => dispatch(deleteCase(data._id))}>Удалить</button>
                   </td>
                 </tr>
               )}

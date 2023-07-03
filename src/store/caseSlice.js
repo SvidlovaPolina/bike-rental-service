@@ -12,7 +12,7 @@ export const axiosCases = createAsyncThunk(
         "authorization": `Bearer ${window.localStorage.getItem('token')}`
       }
     })
-    console.log(response.data.status)
+    // console.log(response.data.status)
 
     if (response.data.status !== "OK") {
       throw new Error('Error!')
@@ -27,6 +27,33 @@ export const axiosCases = createAsyncThunk(
   }
 )
 
+ export const deleteCase = createAsyncThunk(
+  'cases/deleteCase',
+  async function(id, {rejectWithValue, dispatch}) {
+    try {
+      const response = await axios(`https://sf-final-project-be.herokuapp.com/api/cases/${id}`, {
+        method: 'delete',
+        maxBodyLength: Infinity,
+        headers: { 
+          "authorization": `Bearer ${window.localStorage.getItem('token')}`
+        },
+      })
+      console.log(response)
+      if (response.data.status !== "OK") {
+        throw new Error('Can\'t delete case!')
+      }
+      dispatch(removeCase({id}))
+    } catch (error) {
+      return rejectWithValue(error.message)
+    }
+  }
+)
+
+const setError = (state, action) => {
+  state.status = 'rejected';
+  state.error = action.payload
+}
+
 const caseSlice = createSlice({
     name: 'cases',
     initialState: {
@@ -36,33 +63,10 @@ const caseSlice = createSlice({
     },
     reducers: {
         addCase(state, action) {
-            // state.cases = [{
-            //     licenseNumber: "11111111",
-            //     type: "sport",
-            //     color: "white",
-            //     _id: "654321354321asfasgadv",
-            //     description: "sjdhfsjdhf"
-            // }]      
-        },
-        
-
-        removeCase(state, action) {
-                // let config = {
-                //   method: 'delete',
-                //   maxBodyLength: Infinity,
-                //   url: 'https://sf-final-project-be.herokuapp.com/api/cases/' + action.payload.id,
-                //   headers: { 
-                //     "authorization": `Bearer ${window.localStorage.getItem('token')}`
-                //   },
-                // };
                 
-                // axios(config)
-                // .then(function (response) {
-                //   console.log(JSON.stringify(response.data));
-                // })
-                // .catch(function (error) {
-                //   console.log(error);
-                // });
+        },
+        removeCase(state, action) {
+          // state.cases = state.cases.filter(case => case.id !== action.payload.id);  
         },
         editCase(state, action) {}
     },
@@ -75,10 +79,8 @@ const caseSlice = createSlice({
         state.status = 'resolved';
         state.cases = action.payload
       },
-      [axiosCases.rejected]: (state, action) => {
-        state.status = 'rejected';
-        state.error = action.payload
-      },
+      [axiosCases.rejected]: setError,
+      [deleteCase.rejected]: setError
     }
 });
 
