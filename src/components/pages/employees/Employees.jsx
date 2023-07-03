@@ -1,57 +1,29 @@
 import css from './Employees.module.css'
-import { Link } from 'react-router-dom'
-import axios from 'axios'
-import { useState, useEffect } from 'react'
 import clsx from 'clsx'
+import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { axiosOfficers } from '../../../store/officerSlice'
+import { deleteOfficer } from '../../../store/officerSlice'
 
 const Employees = () => {
-  const [ staff, setStaff ] = useState([])
+
+  const dispatch = useDispatch()
+  const staff = useSelector(state => state.officers.officers)
+  const {status, error} = useSelector(state => state.officers)
 
   useEffect(() => {
-    let config = {
-      method: 'get',
-      maxBodyLength: Infinity,
-      url: 'https://sf-final-project-be.herokuapp.com/api/officers/',
-      headers: {
-        "authorization": `Bearer ${window.localStorage.getItem('token')}`
-       }
-    };
-    
-    axios(config)
-    .then(function (response) {
-      setStaff(response.data.officers)
-    })
-
-    .catch(function (error) {
-      console.log(error);
-    });
-  }, [staff.officers])
-
-
-  const DeleteStaff = (id) => {
-    // console.log(id)
-    let config = {
-      method: 'delete',
-      maxBodyLength: Infinity,
-      url: 'https://sf-final-project-be.herokuapp.com/api/officers/' + id,
-      headers: { 
-        "authorization": `Bearer ${window.localStorage.getItem('token')}`
-      },
-    };
-    
-    axios(config)
-    .then(function (response) {
-      console.log(JSON.stringify(response.data));
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
+    dispatch(axiosOfficers())
+  }, [dispatch])
 
   return (
     <>
       <Link to="/staff" className={css.homeLink}>&#8592; Назад</Link>
       <div className={css.container}>
+
+      {status === 'loading' && <h2>Loading...</h2>}
+      {error && <h2>An error occured: {error}</h2>}
+
         <table>
           <thead>
             <tr>
@@ -64,18 +36,18 @@ const Employees = () => {
               </tr>
             </thead>
             <tbody>
-              {staff.map((officer) => 
-                  <tr key={officer._id}>
-                      <td>{officer.firstName}</td>
-                      <td>{officer.lastName}</td>
-                      <td>{officer.email}</td>
-                      <td>{officer._id}</td>
-                      <td>{officer.approved ? 'Да' : 'Нет'}</td>
+              {staff.map((data) => 
+                  <tr key={data._id}>
+                      <td>{data.firstName}</td>
+                      <td>{data.lastName}</td>
+                      <td>{data.email}</td>
+                      <td>{data._id}</td>
+                      <td>{data.approved ? 'Да' : 'Нет'}</td>
                     <td>
-                      <Link to={`/employees/:${officer._id}`} key={officer._id}>
+                      <Link to={`/employees/:${data._id}`} key={data._id}>
                         <button className={clsx(css.button, css.additional)}>Дополнительно</button>
                       </Link>
-                      <button className={clsx(css.button, css.delete)} onClick={(e) => {DeleteStaff(officer._id)}}>Удалить</button>
+                      <button className={clsx(css.button, css.delete)} onClick={() => dispatch(deleteOfficer(data._id))}>Удалить</button>
                     </td>
                   </tr>
               )}

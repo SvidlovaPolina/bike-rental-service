@@ -12,7 +12,7 @@ export const axiosCases = createAsyncThunk(
         "authorization": `Bearer ${window.localStorage.getItem('token')}`
       }
     })
-    // console.log(response.data.status)
+    // console.log(response.data.data)
 
     if (response.data.status !== "OK") {
       throw new Error('Error!')

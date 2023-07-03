@@ -1,10 +1,10 @@
 import css from './Cases.module.css'
+import clsx from 'clsx'
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { axiosCases } from '../../../store/caseSlice'
 import { deleteCase } from '../../../store/caseSlice'
-import clsx from 'clsx'
 
 const Cases = () => {
 
@@ -53,7 +53,6 @@ const Cases = () => {
               )}
           </tbody>
         </table>
-        <Link to="/case">Детальная страница кражи</Link>
       </div>
     </>
   )
