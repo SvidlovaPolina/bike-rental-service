@@ -9,6 +9,7 @@ const Cases = () => {
 
   const dispatch = useDispatch()
   const thefts = useSelector(state => state.cases.cases)
+  const {status, error} = useSelector(state => state.cases)
 
   useEffect(() => {
     dispatch(axiosCases())
@@ -38,6 +39,10 @@ const Cases = () => {
     <>
       <Link to="/staff" className={css.homeLink}>&#8592; Назад</Link>
       <div className={css.container}>
+
+      {status === 'loading' && <h2>Loading...</h2>}
+      {error && <h2>An error occured: {error}</h2>}
+
         <table>
           <thead>
             <tr>

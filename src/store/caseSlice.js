@@ -3,28 +3,27 @@ import axios from 'axios'
 
 export const axiosCases = createAsyncThunk(
   'cases/axiosCases',
-  async function() {
-    const response = await axios('https://sf-final-project-be.herokuapp.com/api/cases/', {
+  async function(_, {rejectWithValue}) {
+    try {
+      const response = await axios('https://sf-final-project-be.herokuapp.com/api/cases/', {
       method: 'get',
       maxBodyLength: Infinity,
       headers: {
         "authorization": `Bearer ${window.localStorage.getItem('token')}`
       }
     })
-    // console.log(response.data.data)
-        
-        // axios(config)
-        // .then(function (response) {
-        //   console.log(response)
-        // })
-    
-        // .catch(function (error) {
-        //   console.log(error);
-        // });
+    console.log(response.data.status)
 
-        const data = await response.data.data
-        console.log(data)
-        return data
+    if (response.data.status !== "OK") {
+      throw new Error('Error!')
+    }
+
+    const data = await response.data.data
+    // console.log(data)
+    return data
+    } catch (error) {
+      return rejectWithValue(error.message)
+    }
   }
 )
 
@@ -76,7 +75,10 @@ const caseSlice = createSlice({
         state.status = 'resolved';
         state.cases = action.payload
       },
-      [axiosCases.rejected]: (state, action) => {},
+      [axiosCases.rejected]: (state, action) => {
+        state.status = 'rejected';
+        state.error = action.payload
+      },
     }
 });
 
