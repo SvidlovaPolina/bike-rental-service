@@ -1,51 +1,38 @@
 import css from './Cases.module.css'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { axiosCases } from '../../../store/caseSlice'
 import clsx from 'clsx'
 
 const Cases = () => {
-  const [ thefts, setThefts ] = useState([])
+
+  const dispatch = useDispatch()
+  const thefts = useSelector(state => state.cases.cases)
 
   useEffect(() => {
-    let config = {
-      method: 'get',
-      maxBodyLength: Infinity,
-      url: 'https://sf-final-project-be.herokuapp.com/api/cases/',
-      headers: {
-        "authorization": `Bearer ${window.localStorage.getItem('token')}`
-       }
-    };
-    
-    axios(config)
-    .then(function (response) {
-      setThefts(response.data.data)
-    })
+    dispatch(axiosCases())
+  }, [dispatch])
 
-    .catch(function (error) {
-      console.log(error);
-    });
-  }, [thefts.data])
-
-  const DeleteTheft = (id) => {
-    console.log(id)
-    let config = {
-      method: 'delete',
-      maxBodyLength: Infinity,
-      url: 'https://sf-final-project-be.herokuapp.com/api/cases/' + id,
-      headers: { 
-        "authorization": `Bearer ${window.localStorage.getItem('token')}`
-      },
-    };
+  // const DeleteTheft = (id) => {
+  //   console.log(id)
+  //   let config = {
+  //     method: 'delete',
+  //     maxBodyLength: Infinity,
+  //     url: 'https://sf-final-project-be.herokuapp.com/api/cases/' + id,
+  //     headers: { 
+  //       "authorization": `Bearer ${window.localStorage.getItem('token')}`
+  //     },
+  //   };
     
-    axios(config)
-    .then(function (response) {
-      console.log(JSON.stringify(response.data));
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
+  //   axios(config)
+  //   .then(function (response) {
+  //     console.log(JSON.stringify(response.data));
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
+  // }
   
   return (
     <>
@@ -74,7 +61,8 @@ const Cases = () => {
                   <Link to={`/cases/:${data._id}`} key={data._id}>
                     <button className={clsx(css.button, css.additional)}>Дополнительно</button>
                   </Link>
-                    <button className={clsx(css.button, css.delete)} onClick={(e) => {DeleteTheft(data._id)}}>Удалить</button>
+                    <button className={clsx(css.button, css.delete)}>Удалить</button>
+                    {/* onClick={(e) => {DeleteTheft(data._id)}} */}
                   </td>
                 </tr>
               )}

@@ -1,73 +1,83 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
+
+export const axiosCases = createAsyncThunk(
+  'cases/axiosCases',
+  async function() {
+    const response = await axios('https://sf-final-project-be.herokuapp.com/api/cases/', {
+      method: 'get',
+      maxBodyLength: Infinity,
+      headers: {
+        "authorization": `Bearer ${window.localStorage.getItem('token')}`
+      }
+    })
+    // console.log(response.data.data)
+        
+        // axios(config)
+        // .then(function (response) {
+        //   console.log(response)
+        // })
+    
+        // .catch(function (error) {
+        //   console.log(error);
+        // });
+
+        const data = await response.data.data
+        console.log(data)
+        return data
+  }
+)
 
 const caseSlice = createSlice({
     name: 'cases',
     initialState: {
-        cases: []
+        cases: [],
+        status: null,
+        error: null
     },
     reducers: {
         addCase(state, action) {
-            state.cases = [{
-                licenseNumber: "11111111",
-                type: "sport",
-                color: "white",
-                _id: "654321354321asfasgadv",
-                description: "sjdhfsjdhf"
-            }]
-
-            // <tr key={data._id}>
-            //       <td>{data.licenseNumber}</td>
-            //       <td>{data.type}</td>
-            //       <td>{data.color}</td>
-            //       <td>{data._id}</td>
-            //       <td>{data.description}</td>
-
-                // let config = {
-                //   method: 'get',
-                //   maxBodyLength: Infinity,
-                //   url: 'https://sf-final-project-be.herokuapp.com/api/cases/',
-                //   headers: {
-                //     "authorization": `Bearer ${window.localStorage.getItem('token')}`
-                //    }
-                // };
-                
-                // axios(config)
-                // .then(function (response) {
-                //     state.cases = response.data
-                //     console.log(state.cases)
-                // })
-            
-                // .catch(function (error) {
-                //   console.log(error);
-                // });
-                
+            // state.cases = [{
+            //     licenseNumber: "11111111",
+            //     type: "sport",
+            //     color: "white",
+            //     _id: "654321354321asfasgadv",
+            //     description: "sjdhfsjdhf"
+            // }]      
         },
         
 
         removeCase(state, action) {
-            // const DeleteTheft = (id) => {
-            //     console.log(id)
-                let config = {
-                  method: 'delete',
-                  maxBodyLength: Infinity,
-                  url: 'https://sf-final-project-be.herokuapp.com/api/cases/' + action.payload.id,
-                  headers: { 
-                    "authorization": `Bearer ${window.localStorage.getItem('token')}`
-                  },
-                };
+                // let config = {
+                //   method: 'delete',
+                //   maxBodyLength: Infinity,
+                //   url: 'https://sf-final-project-be.herokuapp.com/api/cases/' + action.payload.id,
+                //   headers: { 
+                //     "authorization": `Bearer ${window.localStorage.getItem('token')}`
+                //   },
+                // };
                 
-                axios(config)
-                .then(function (response) {
-                  console.log(JSON.stringify(response.data));
-                })
-                .catch(function (error) {
-                  console.log(error);
-                });
-            //   }
+                // axios(config)
+                // .then(function (response) {
+                //   console.log(JSON.stringify(response.data));
+                // })
+                // .catch(function (error) {
+                //   console.log(error);
+                // });
         },
         editCase(state, action) {}
     },
+    extraReducers: {
+      [axiosCases.pending]: (state) => {
+        state.status = 'loading';
+        state.error = null
+      },
+      [axiosCases.fulfilled]: (state, action) => {
+        state.status = 'resolved';
+        state.cases = action.payload
+      },
+      [axiosCases.rejected]: (state, action) => {},
+    }
 });
 
 export const {addCase, removeCase, editCase} = caseSlice.actions;

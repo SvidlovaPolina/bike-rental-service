@@ -18,7 +18,7 @@ const Header = () => {
 					<Link to="/help">Помощь</Link>
 					<Link to="/staff">Сотрудникам</Link>
 				</nav>
-				<p className={css.sprint}></p>
+				<span></span>
 				<div className={css.burgerIcon} onClick={() => setIsMenuShown(!isMenuShown)}>
                 <span></span>
                 <span></span>
