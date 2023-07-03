@@ -1,11 +1,19 @@
-import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
-import { signIn } from '../../store/authSlice'
 import css from './Forms.module.css'
+import { useForm } from 'react-hook-form'
+import { useDispatch, useSelector } from 'react-redux'
+import { axiosAuthorization } from '../../store/authSlice'
+import { Link } from 'react-router-dom'
+// import { signIn } from '../../store/authSlice'
+
 
 const FormAuthorization = () => {
 
 	const dispatch = useDispatch();
+	// const auth = useSelector(state => state.auth.auth)
+	// console.log(auth)
+	const {status, error} = useSelector(state => state.auth)
+	console.log(status)
+	// dispatch(axiosAuthorization())
 
 	const {
 		register,
@@ -20,8 +28,8 @@ const FormAuthorization = () => {
 	})
 
 	const onSumbit = (data) => {
-		let result = dispatch(signIn({ data }))
-		console.log(result)
+		dispatch(axiosAuthorization(data))
+
 		/*if(result.payload.result.status){
 			// перенаправить на страничку StaffPage (/staff)
 		} else{
@@ -62,6 +70,10 @@ const FormAuthorization = () => {
 				<div className={css.error}>{errors?.password && <p>{errors?.password?.message || "Error!"}</p>}</div></label>
 
 				<button className={css.submit} type='submit' disabled={!isValid}>Войти</button>
+
+				{status === 'loading' && <h2>Loading...</h2>}
+				{status === 'resolved' && <Link to='/staff'></Link>}
+				{error && <h2>An error occured: {error}</h2>}
 			</form>
 		</div>
     )
