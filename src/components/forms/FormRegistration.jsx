@@ -1,11 +1,15 @@
-import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
-import { signUp } from '../../store/authSlice'
 import css from './Forms.module.css'
+import { useForm } from 'react-hook-form'
+import { useDispatch, useSelector } from 'react-redux'
+import { axiosRegistration } from '../../store/regSlice'
 
 const FormRegistration = () => {
 
 	const dispatch = useDispatch();
+	// const reg = useSelector(state => state.reg.reg)
+	// console.log(reg)
+	const {status, error} = useSelector(state => state.reg)
+	// console.log(status)
 
 	const {
 		register,
@@ -20,8 +24,8 @@ const FormRegistration = () => {
 	})
 
 	const onSumbit = (data) => {
-		let result = dispatch(signUp({ data }))
-		console.log(result)
+		dispatch(axiosRegistration(data))
+
 		/*if(result.payload.result.status){
 			// перенаправить на страничку авториазции AuthorizationPage (/authorization)
 		} else{
@@ -91,6 +95,10 @@ const FormRegistration = () => {
 				<div className={css.error}>{errors?.clientId && <p>{errors?.clientId?.message || "Error!"}</p>}</div></label>
 
 				<button className={css.submit} type='submit' disabled={!isValid}>Зарегистрироваться</button>
+
+			{status === 'loading' && <h3>Loading...</h3>}
+			{status === 'resolved' && <h3 className={css.succes}>Регистрация прошла успешно!</h3>}
+			{error && <h3 className={css.error}>An error occured: {error}</h3>}
 			</form>
 		</div>
     )

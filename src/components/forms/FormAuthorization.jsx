@@ -2,9 +2,6 @@ import css from './Forms.module.css'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { axiosAuthorization } from '../../store/authSlice'
-import { Link } from 'react-router-dom'
-// import { signIn } from '../../store/authSlice'
-
 
 const FormAuthorization = () => {
 
@@ -12,8 +9,7 @@ const FormAuthorization = () => {
 	// const auth = useSelector(state => state.auth.auth)
 	// console.log(auth)
 	const {status, error} = useSelector(state => state.auth)
-	console.log(status)
-	// dispatch(axiosAuthorization())
+	// console.log(error)
 
 	const {
 		register,
@@ -70,11 +66,10 @@ const FormAuthorization = () => {
 				<div className={css.error}>{errors?.password && <p>{errors?.password?.message || "Error!"}</p>}</div></label>
 
 				<button className={css.submit} type='submit' disabled={!isValid}>Войти</button>
-
-				{status === 'loading' && <h2>Loading...</h2>}
-				{status === 'resolved' && <Link to='/staff'></Link>}
-				{error && <h2>An error occured: {error}</h2>}
 			</form>
+			{status === 'loading' && <h3>Loading...</h3>}
+			{status === 'resolved' && <h3 className={css.succes}>Авторизация прошла успешно!</h3>}
+			{error && <h3 className={css.error}>An error occured: {error}</h3>}
 		</div>
     )
 }

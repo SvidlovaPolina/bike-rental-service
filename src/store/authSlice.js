@@ -11,14 +11,14 @@ export const axiosAuthorization = createAsyncThunk(
                 headers: { 	},
                 data: data
             })
+            console.log(response)
             window.localStorage.setItem('token', response.data.data.token)
             if (response.data.status !== "OK") {
                 throw new Error('Error!')
             }
             const result = await response.data
-            console.log(result)
+            // console.log(result)
             return result
-
         } catch (error) {
             return rejectWithValue(error.message)
         }
@@ -28,7 +28,7 @@ export const axiosAuthorization = createAsyncThunk(
 const setError = (state, action) => {
     state.status = 'rejected';
     state.error = action.payload
-  }
+}
 
 const authSlice = createSlice({
     name: 'authorization',
@@ -38,42 +38,24 @@ const authSlice = createSlice({
         error: null
     },
     reducers: {
-        signIn(state, action){
+        signIn(state, action){},
+        signUp(state, action){
 
             // let config = {
             //     method: 'post',
-            //       maxBodyLength: Infinity,
-            //     url: 'https://sf-final-project-be.herokuapp.com/api/auth/sign_in',
-            //     headers: { 	},
+            //     maxBodyLength: Infinity,
+            //     url: 'https://sf-final-project-be.herokuapp.com/api/auth/sign_up',
+            //     headers: { },
             //     data : action.payload.data
             // };
     
             // axios(config)
             //     .then(function (response) {
-            //         window.localStorage.setItem('token', response.data.data.token)
-            //         action.payload.answer = { status: true, message: '' }
-            //     })
-            //     .catch(function (error) {
-            //         action.payload.result = { status: false, message: error.response.data.message }
+            //     console.log(response);
+            // })
+            // .catch(function (error) {
+            //     console.log(error);
             // });
-        },
-        signUp(state, action){
-
-            let config = {
-                method: 'post',
-                maxBodyLength: Infinity,
-                url: 'https://sf-final-project-be.herokuapp.com/api/auth/sign_up',
-                headers: { },
-                data : action.payload.data
-            };
-    
-            axios(config)
-                .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
         }
     },
     extraReducers: {
@@ -86,9 +68,9 @@ const authSlice = createSlice({
           state.auth = action.payload
         },
         [axiosAuthorization.rejected]: setError,
-      }
+    }
 });
 
-export const {signIn, signUp} = authSlice.actions;
+export const {signIn} = authSlice.actions;
 
 export default authSlice.reducer;
