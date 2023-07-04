@@ -12,7 +12,7 @@ export const axiosOfficers = createAsyncThunk(
           "authorization": `Bearer ${window.localStorage.getItem('token')}`
         }
       })
-    //   console.log(response.data.officers)
+      console.log(response)
       if (response.statusText !== "OK") {
         throw new Error('Error!')
       }

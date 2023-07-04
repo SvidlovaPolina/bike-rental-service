@@ -95,11 +95,10 @@ const FormRegistration = () => {
 				<div className={css.error}>{errors?.clientId && <p>{errors?.clientId?.message || "Error!"}</p>}</div></label>
 
 				<button className={css.submit} type='submit' disabled={!isValid}>Зарегистрироваться</button>
-
-			{status === 'loading' && <h3>Loading...</h3>}
-			{status === 'resolved' && <h3 className={css.succes}>Регистрация прошла успешно!</h3>}
-			{error && <h3 className={css.error}>An error occured: {error}</h3>}
 			</form>
+			{status === 'loading' && <h3>Loading...</h3>}
+			{status === 'resolved' && <h3 className={css.succes}>Регистрация прошла успешно!<br />Перейдите во вкладку "Сотрудникам" и авторизуйтесь в системе</h3>}
+			{error && <h3 className={css.errorServer}>An error occured: {error}</h3>}
 		</div>
     )
 }

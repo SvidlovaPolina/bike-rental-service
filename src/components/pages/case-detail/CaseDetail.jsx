@@ -1,5 +1,5 @@
-import React from 'react'
 import css from './CaseDetail.module.css'
+import clsx from 'clsx'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { Link, useResolvedPath } from 'react-router-dom'
@@ -40,7 +40,7 @@ const CaseDetail = () => {
     .catch(function (error) {
       console.log(error);
     });
-  }, [setEdit])
+  }, [caseId])
 
   const onchange = (e, name) => {
     edit.set(name, e.target.innerHTML);
@@ -117,7 +117,7 @@ const CaseDetail = () => {
             </table>
         </div>
           <div className={css.editButtons}>
-            <button className={css.button} onClick={Save}>Сохранить изменения</button>
+            <button className={clsx(css.button, css.additional)} onClick={Save}>Сохранить изменения</button>
         </div>
       </div>
     </>

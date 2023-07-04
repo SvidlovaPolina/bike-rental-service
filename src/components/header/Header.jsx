@@ -29,7 +29,7 @@ const Header = () => {
                 <div className={css.items} onClick={() => setIsMenuShown(!isMenuShown)}><Link to="/">Главная</Link></div>
                 <div className={css.items} onClick={() => setIsMenuShown(!isMenuShown)}><Link to="/help">Помощь</Link></div>
 				<div className={css.items} onClick={() => setIsMenuShown(!isMenuShown)}><Link to="/staff">Сотрудникам</Link></div>
-				<p className={css.sprint}>Выйти</p>
+				{/* <p className={css.sprint}>Выйти</p> */}
             	</div>
             	}
 			</header>

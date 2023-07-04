@@ -12,12 +12,10 @@ export const axiosCases = createAsyncThunk(
         "authorization": `Bearer ${window.localStorage.getItem('token')}`
       }
     })
-    // console.log(response.data.data)
-
+    // console.log(response)
     if (response.data.status !== "OK") {
       throw new Error('Error!')
     }
-
     const data = await response.data.data
     // console.log(data)
     return data
@@ -38,7 +36,7 @@ export const axiosCases = createAsyncThunk(
           "authorization": `Bearer ${window.localStorage.getItem('token')}`
         },
       })
-      console.log(response)
+      // console.log(response)
       if (response.data.status !== "OK") {
         throw new Error('Can\'t delete case!')
       }

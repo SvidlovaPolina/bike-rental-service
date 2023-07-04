@@ -126,9 +126,11 @@
   	content: "⚠ ";
 }
 .succes {
-	color: green
+	color: #2fbf54d9;
+	text-align: center;
 }
 
-.error {
-	color: red
+.errorServer {
+	color: #df1919cf;
+	text-align: center;
 }

@@ -68,8 +68,8 @@ const FormAuthorization = () => {
 				<button className={css.submit} type='submit' disabled={!isValid}>Войти</button>
 			</form>
 			{status === 'loading' && <h3>Loading...</h3>}
-			{status === 'resolved' && <h3 className={css.succes}>Авторизация прошла успешно!</h3>}
-			{error && <h3 className={css.error}>An error occured: {error}</h3>}
+			{status === 'resolved' && <h3 className={css.succes}>Авторизация прошла успешно!<br />Перейдите во вкладку "Сотрудникам"</h3>}
+			{error && <h3 className={css.errorServer}>An error occured: {error}</h3>}
 		</div>
     )
 }
