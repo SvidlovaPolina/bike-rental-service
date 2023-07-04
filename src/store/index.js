@@ -4,6 +4,7 @@ import caseDetailReducer from './caseDetailSlice'
 import authReducer from './authSlice'
 import regReducer from './regSlice'
 import officerReducer from './officerSlice'
+import reportReducer from './reportSlice'
 
 export default configureStore({
     reducer: {
@@ -11,6 +12,7 @@ export default configureStore({
         case: caseDetailReducer,
         auth: authReducer,
         reg: regReducer,
-        officers: officerReducer
+        officers: officerReducer,
+        report: reportReducer
     }
 });

@@ -1,8 +1,12 @@
-import axios from 'axios'
-import { useForm } from 'react-hook-form'
 import css from './Forms.module.css'
+import { useForm } from 'react-hook-form'
+import { useDispatch, useSelector } from 'react-redux'
+import { axiosReport } from '../../store/reportSlice'
 
 const FormReport = () => {
+
+	const dispatch = useDispatch();
+	const {status, error} = useSelector(state => state.report)
 
 	const {
 		register,
@@ -17,30 +21,9 @@ const FormReport = () => {
 	})
 
 	const onSumbit = (data) => {
-		Report(data);
+		dispatch(axiosReport(data))
 		reset()
 	}
-
-	const Report = (data) => {
-
-		let config = {
-		  method: 'post',
-		  maxBodyLength: Infinity,
-		  url: 'https://sf-final-project-be.herokuapp.com/api/public/report',
-		  headers: { },
-		  data: data
-		};
-		
-		axios(config)
-		.then(function (response) {
-		  console.log(JSON.stringify(response.data));
-		})
-		.catch(function (error) {
-		  console.log(error);
-		});
-	}
-
-	// 1ce988f9-a327-4c5e-b749-4ba64ca7ea9b
 
     return (
         <div className={css.form}>
@@ -118,6 +101,9 @@ const FormReport = () => {
 
 				<button className={css.submit} type='submit' disabled={!isValid}>Отправить</button>
 			</form>
+			{status === 'loading' && <h3>Loading...</h3>}
+			{status === 'resolved' && <h3 className={css.succes}>Данные приняты, спасибо!</h3>}
+			{error && <h3 className={css.errorServer}>An error occured: {error}</h3>}
 		</div>
     )
 }

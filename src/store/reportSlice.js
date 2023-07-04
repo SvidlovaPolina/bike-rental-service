@@ -1,11 +1,11 @@
 import axios from 'axios'
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-export const axiosRegistration = createAsyncThunk(
-    'registration/axiosRegistration',
+export const axiosReport = createAsyncThunk(
+    'report/axiosReport',
     async function(data, {rejectWithValue}) {
         try {
-            const response = await axios('https://sf-final-project-be.herokuapp.com/api/auth/sign_up', {
+            const response = await axios('https://sf-final-project-be.herokuapp.com/api/public/report', {
                 method: 'post',
                 maxBodyLength: Infinity,
                 headers: { 	},
@@ -16,6 +16,7 @@ export const axiosRegistration = createAsyncThunk(
                 throw new Error('Error!')
             }
             const result = await response.data
+            // console.log(result)
             return result
         } catch (error) {
             return rejectWithValue(error.message)
@@ -28,29 +29,29 @@ const setError = (state, action) => {
     state.error = action.payload
 }
 
-const regSlice = createSlice({
-    name: 'registration',
+const reportSlice = createSlice({
+    name: 'report',
     initialState: {
-        reg: [],
+        report: [],
         status: null,
         error: null
     },
     reducers: {
-        signUp(state, action){},
+        reportCase(state, action){},
     },
     extraReducers: {
-        [axiosRegistration.pending]: (state) => {
+        [axiosReport.pending]: (state) => {
           state.status = 'loading';
           state.error = null
         },
-        [axiosRegistration.fulfilled]: (state, action) => {
+        [axiosReport.fulfilled]: (state, action) => {
           state.status = 'resolved';
-          state.reg = action.payload
+          state.report = action.payload
         },
-        [axiosRegistration.rejected]: setError,
+        [axiosReport.rejected]: setError,
     }
 })
 
-export const {signUp} = regSlice.actions;
+export const { reportCase } = reportSlice.actions;
 
-export default regSlice.reducer;
+export default reportSlice.reducer;
