@@ -73,6 +73,7 @@
 .exit {
 	color:#fff;
 	cursor: pointer;
+	text-decoration: none;
 }
 
 .exit:hover {
@@ -125,6 +126,10 @@
     }
 
 	.navigation {
+		display: none;
+	}
+
+	.exit {
 		display: none;
 	}
 }
