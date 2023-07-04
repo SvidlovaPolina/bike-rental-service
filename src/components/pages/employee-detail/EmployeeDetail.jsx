@@ -14,6 +14,8 @@ const EmployeeDetail = () => {
     new Map()
   )
 
+  const [approved, setApproved] = useState(false)
+
   useEffect(() => {
     let config = {
       method: 'get',
@@ -34,6 +36,8 @@ const EmployeeDetail = () => {
         ['email', data.email],
         ['approved', data.approved],
       ]))
+      console.log(data)
+      setApproved(data.approved)
     })
 
     .catch(function (error) {
@@ -72,6 +76,14 @@ const EmployeeDetail = () => {
     });
   }
 
+  const handleSelectChange = (e) => {
+    console.log(typeof e.target.value)
+    edit.set('approved', e.target.value === 'true' ? true : false)
+    setApproved(e.target.value === 'true' ? true : false)
+    console.log(edit)
+  }
+
+
   return (
     <>
       <Link to='/employees'className={css.homeLink}>&#8592; Назад</Link>
@@ -96,7 +108,14 @@ const EmployeeDetail = () => {
               </tr>
               <tr>
                 <th>Одобрен</th>
-                <td contentEditable={true} suppressContentEditableWarning={true} onInput={(e) => onchange(e, 'approved')}>{edit.get('approved')}</td>
+                {/* <td contentEditable={true} suppressContentEditableWarning={true} onInput={(e) => onchange(e, 'approved')}>{edit.get('approved') ? 'Да' : 'Нет'}</td> */}
+                <td>
+                  <select key='approved' className={css.select} onChange={handleSelectChange} value={approved}>
+				            <option value={true}>Да</option>
+                    <option value={false}>Нет</option>
+                    {/* selected={edit.get('approved')} */}
+			            </select>
+                </td>
               </tr>
             </tbody>
           </table>

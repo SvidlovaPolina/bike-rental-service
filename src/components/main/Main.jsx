@@ -10,6 +10,7 @@ import Cases from '../pages/cases/Cases'
 import Employees from '../pages/employees/Employees'
 import EmployeeDetail from '../pages/employee-detail/EmployeeDetail'
 import CaseDetail from '../pages/case-detail/CaseDetail'
+import Out from '../pages/authorization/LogOut'
 
 const Main = (props) => {
 	return (
@@ -26,6 +27,7 @@ const Main = (props) => {
 				<Route path="/cases/:caseId" element={<CaseDetail />} />
 				<Route path="/employees" element={<Employees />} />
 				<Route path={'/employees/:staffId'} element={<EmployeeDetail />} />
+				<Route path={'/logout'} element={<Out />} />
 			</Routes>
 		</main>
 		</>

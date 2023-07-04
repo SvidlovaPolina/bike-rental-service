@@ -1,14 +1,20 @@
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import Logo from '../../assets/logo.png'
 import css from './Header.module.css'
-// import axios from 'axios'
+import { axiosToken } from '../../store/tokenSlice'
 
 const Header = () => {
 	const [isMenuShown, setIsMenuShown] = useState(false);
-	const {status, error} = useSelector(state => state.auth)
-	console.log(status)
+
+	const dispatch = useDispatch();
+	const {status, error} = useSelector(state => state.token)
+	// console.log(status)
+
+	useEffect(() => {
+		dispatch(axiosToken())
+	}, [dispatch])
 
 	return (
 		<>
@@ -22,9 +28,10 @@ const Header = () => {
 					<Link to="/help">Помощь</Link>
 					<Link to="/staff">Сотрудникам</Link>
 				</nav>
+				{status === 'loading' && <span></span>}
 				{error && <span></span>}
-				{status === 'resolved' && <span className={css.exit}>Выйти</span>}
-				<span></span>
+				{status === 'resolved' && <Link to='/logout' className={css.exit}>Выйти</Link>}
+
 				<div className={css.burgerIcon} onClick={() => setIsMenuShown(!isMenuShown)}>
                 <span></span>
                 <span></span>

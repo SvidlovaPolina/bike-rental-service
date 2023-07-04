@@ -10,6 +10,7 @@ const Employees = () => {
 
   const dispatch = useDispatch()
   const staff = useSelector(state => state.officers.officers)
+  // console.log(staff)
   const {status, error} = useSelector(state => state.officers)
 
   useEffect(() => {

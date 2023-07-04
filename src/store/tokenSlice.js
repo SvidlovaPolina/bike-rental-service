@@ -4,8 +4,12 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 export const axiosToken = createAsyncThunk(
     'token/axiosToken',
     async function(_, {rejectWithValue}) {
-        let token = window.localStorage.getItem('token');
+
         try {
+            let token = window.localStorage.getItem('token');
+            if (token === null) {
+                throw new Error('Error!')
+            }
             const response = await axios('https://sf-final-project-be.herokuapp.com/api/auth/', {
                 method: 'get',
                 maxBodyLength: Infinity,
@@ -37,7 +41,9 @@ const tokenSlice = createSlice({
         error: null
     },
     reducers: {
-        checkToken(state, action){},
+        LogOut(state, action){
+            window.localStorage.removeItem('token');
+        },
     },
     extraReducers: {
         [axiosToken.pending]: (state) => {
@@ -52,6 +58,6 @@ const tokenSlice = createSlice({
     }
 });
 
-export const {checkToken} = tokenSlice.actions;
+export const {LogOut} = tokenSlice.actions;
 
 export default tokenSlice.reducer;
