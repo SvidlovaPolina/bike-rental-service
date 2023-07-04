@@ -60,11 +60,9 @@ const caseSlice = createSlice({
         error: null
     },
     reducers: {
-        addCase(state, action) {
-                
+        addCase(state, action) {          
         },
         removeCase(state, action) {
-          // state.cases = state.cases.filter(case => case.id !== action.payload.id);  
         },
         editCase(state, action) {}
     },

@@ -39,24 +39,6 @@ const authSlice = createSlice({
     },
     reducers: {
         signIn(state, action){},
-        signUp(state, action){
-
-            // let config = {
-            //     method: 'post',
-            //     maxBodyLength: Infinity,
-            //     url: 'https://sf-final-project-be.herokuapp.com/api/auth/sign_up',
-            //     headers: { },
-            //     data : action.payload.data
-            // };
-    
-            // axios(config)
-            //     .then(function (response) {
-            //     console.log(response);
-            // })
-            // .catch(function (error) {
-            //     console.log(error);
-            // });
-        }
     },
     extraReducers: {
         [axiosAuthorization.pending]: (state) => {

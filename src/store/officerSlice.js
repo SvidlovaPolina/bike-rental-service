@@ -61,10 +61,8 @@ const setError = (state, action) => {
       },
       reducers: {
           addOfficer(state, action) {
-            // state.officers.push({})   
           },
           removeOfficer(state, action) {
-            // state.officers = state.officers.filter(officer => officer.id !== action.payload.id);  
           },
           editOfficer(state, action) {}
       },
@@ -78,7 +76,7 @@ const setError = (state, action) => {
           state.officers = action.payload
         },
         [axiosOfficers.rejected]: setError,
-        // [deleteCase.rejected]: setError
+        [deleteOfficer.rejected]: setError
       }
   });
   

@@ -6,10 +6,8 @@ import { axiosAuthorization } from '../../store/authSlice'
 const FormAuthorization = () => {
 
 	const dispatch = useDispatch();
-	// const auth = useSelector(state => state.auth.auth)
-	// console.log(auth)
 	const {status, error} = useSelector(state => state.auth)
-	// console.log(error)
+	// console.log(status)
 
 	const {
 		register,
@@ -25,7 +23,6 @@ const FormAuthorization = () => {
 
 	const onSumbit = (data) => {
 		dispatch(axiosAuthorization(data))
-
 		/*if(result.payload.result.status){
 			// перенаправить на страничку StaffPage (/staff)
 		} else{

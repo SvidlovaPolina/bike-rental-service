@@ -70,6 +70,15 @@
 	color: #A63268;
 }
 
+.exit {
+	color:#fff;
+	cursor: pointer;
+}
+
+.exit:hover {
+	color: #f1dcdc;
+}
+
 .menu {
 	position: fixed;
 	top: 48px;

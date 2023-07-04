@@ -5,6 +5,7 @@ import authReducer from './authSlice'
 import regReducer from './regSlice'
 import officerReducer from './officerSlice'
 import reportReducer from './reportSlice'
+import tokenReducer from './tokenSlice'
 
 export default configureStore({
     reducer: {
@@ -13,6 +14,7 @@ export default configureStore({
         auth: authReducer,
         reg: regReducer,
         officers: officerReducer,
-        report: reportReducer
+        report: reportReducer,
+        token: tokenReducer
     }
 });
