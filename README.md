@@ -1,3 +1,11 @@
+Client ID
+1ce988f9-a327-4c5e-b749-4ba64ca7ea9b
+либо в подсказке поля
+
+лог: test2@mail.ru
+пасс: 22222222
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
