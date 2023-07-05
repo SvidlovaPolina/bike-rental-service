@@ -69,3 +69,19 @@
 .homeLink:hover {
 	color: #000;
 }
+
+.select {
+	padding: 5px;
+	border-radius: 8px;
+}
+
+@media (max-width: 774px ) {
+
+    .container {
+        width: auto;
+    }
+
+    .editButtons {
+        margin-left: 219px;
+    }
+}

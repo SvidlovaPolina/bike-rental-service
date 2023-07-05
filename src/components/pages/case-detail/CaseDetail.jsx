@@ -32,7 +32,6 @@ const CaseDetail = () => {
         ['type', data.type],
         ['color', data.color],
         ['date', data.date],
-        ['officer', data.officer],
         ['description', data.description]
       ]))
     })
@@ -60,14 +59,12 @@ const CaseDetail = () => {
         'type': edit.get('type'),
         'color': edit.get('color'),
         'date': edit.get('date'),
-        'officer': edit.get('officer'),
         'description': edit.get('description')
        }
     };
     
     axios(config)
     .then(function (response) {
-      // let data = response.data.data
       console.log(response)
     })
 
@@ -104,10 +101,6 @@ const CaseDetail = () => {
                 <tr>
                   <th>Дата кражи</th>
                   <td contentEditable={true} suppressContentEditableWarning={true} onInput={(e) => onchange(e, 'date')}>{edit.get('date')}</td>
-                </tr>
-                <tr>
-                  <th>Ответственный сотрудник</th>
-                  <td contentEditable={true} suppressContentEditableWarning={true} onInput={(e) => onchange(e, 'officer')}>{edit.get('officer')}</td>
                 </tr>
                 <tr>
                   <th>Описание</th>

@@ -16,7 +16,6 @@ export const axiosReport = createAsyncThunk(
                 throw new Error('Error!')
             }
             const result = await response.data
-            // console.log(result)
             return result
         } catch (error) {
             return rejectWithValue(error.message)

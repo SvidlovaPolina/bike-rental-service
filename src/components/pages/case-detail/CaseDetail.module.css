@@ -64,3 +64,25 @@
 .homeLink:hover {
 	color: #000;
 }
+
+@media (max-width: 783px ) {
+
+    .container {
+        width: auto;
+    }
+
+    .editButtons {
+        margin-left: 310px;
+    }
+}
+
+@media (max-width: 521px ) {
+
+    .container {
+        width: auto;
+    }
+
+    .editButtons {
+        margin-left: 39px;
+    }
+}

@@ -12,12 +12,10 @@ export const axiosOfficers = createAsyncThunk(
           "authorization": `Bearer ${window.localStorage.getItem('token')}`
         }
       })
-      // console.log(response)
       if (response.statusText !== "OK") {
         throw new Error('Error!')
       }
       const data = await response.data.officers
-      // console.log(data)
       return data
       } catch (error) {
         return rejectWithValue(error.message)
@@ -64,8 +62,6 @@ const setError = (state, action) => {
           addOfficer(state, action) {
           },
           removeOfficer(state, action) {
-            // console.log(state.officers)
-            // state.officers = state.officers.filter(officer => officer.id !== action.payload.id);
           },
           editOfficer(state, action) {}
       },
@@ -79,6 +75,11 @@ const setError = (state, action) => {
           state.officers = action.payload
         },
         [axiosOfficers.rejected]: setError,
+
+        [deleteOfficer.pending]: (state) => {
+          state.status = 'load';
+          state.error = null
+        },
         [deleteOfficer.rejected]: setError
       }
   });

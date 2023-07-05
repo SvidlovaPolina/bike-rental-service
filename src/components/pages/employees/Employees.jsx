@@ -10,7 +10,6 @@ const Employees = () => {
 
   const dispatch = useDispatch()
   const staff = useSelector(state => state.officers.officers)
-  // console.log(staff)
   const {status, error} = useSelector(state => state.officers)
 
   useEffect(() => {
@@ -25,13 +24,16 @@ const Employees = () => {
       {status === 'loading' && <h2>Loading...</h2>}
       {error && <h2>An error occured: {error}</h2>}
 
+      {status === 'load' && <h4 className={css.update}>Обновите страницу, чтобы увидеть изменения</h4>}
+      {error && <h4>An error occured: {error}</h4>}
+
         <table>
           <thead>
             <tr>
                 <th>Имя</th>
                 <th>Фамилия</th>
-                <th>E-mail</th>
-                <th>Идентификатор сотрудника</th>
+                <th className={css.hide}>E-mail</th>
+                <th className={css.hide}>Идентификатор сотрудника</th>
                 <th>Одобрен</th>
                 <th></th>
               </tr>
@@ -41,8 +43,8 @@ const Employees = () => {
                   <tr key={data._id}>
                       <td>{data.firstName}</td>
                       <td>{data.lastName}</td>
-                      <td>{data.email}</td>
-                      <td>{data._id}</td>
+                      <td className={css.hide}>{data.email}</td>
+                      <td className={css.hide}>{data._id}</td>
                       <td>{data.approved ? 'Да' : 'Нет'}</td>
                     <td>
                       <Link to={`/employees/:${data._id}`} key={data._id}>

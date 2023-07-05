@@ -286,6 +286,11 @@
 
 	.instructionDescription {
 		margin-right: 0px;
+		margin-top: 0;
+	}
+
+	.instructionTitle {
+		padding-top: 0;
 	}
 
 	.instructionIcon {
@@ -313,6 +318,13 @@
 		height: 100px;
 	}
 
+}
+
+@media (max-width: 1071px ) {
+	.titleApp {
+		margin-left: 0;
+		text-align: center;
+	}
 }
 
 @media (max-width: 1004px ) {
@@ -351,6 +363,7 @@
 
 	.downloadApp {
 		margin-left: 0;
+		margin-right: 0;
 	}
 
 	.instructionDescription {

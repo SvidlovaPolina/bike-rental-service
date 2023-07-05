@@ -6,10 +6,7 @@ import { axiosRegistration } from '../../store/regSlice'
 const FormRegistration = () => {
 
 	const dispatch = useDispatch();
-	// const reg = useSelector(state => state.reg.reg)
-	// console.log(reg)
 	const {status, error} = useSelector(state => state.reg)
-	// console.log(status)
 
 	const {
 		register,
@@ -25,13 +22,6 @@ const FormRegistration = () => {
 
 	const onSumbit = (data) => {
 		dispatch(axiosRegistration(data))
-
-		/*if(result.payload.result.status){
-			// перенаправить на страничку авториазции AuthorizationPage (/authorization)
-		} else{
-			// вывести сообщение, что не удалось зарегестрироваться
-			alert(result.payload.result.message);
-		}*/
 		reset()
 	}
 

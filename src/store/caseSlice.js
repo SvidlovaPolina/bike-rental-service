@@ -12,12 +12,10 @@ export const axiosCases = createAsyncThunk(
         "authorization": `Bearer ${window.localStorage.getItem('token')}`
       }
     })
-    // console.log(response)
     if (response.data.status !== "OK") {
       throw new Error('Error!')
     }
     const data = await response.data.data
-    // console.log(data)
     return data
     } catch (error) {
       return rejectWithValue(error.message)
@@ -36,7 +34,6 @@ export const axiosCases = createAsyncThunk(
           "authorization": `Bearer ${window.localStorage.getItem('token')}`
         },
       })
-      // console.log(response)
       if (response.data.status !== "OK") {
         throw new Error('Can\'t delete case!')
       }
@@ -76,6 +73,11 @@ const caseSlice = createSlice({
         state.cases = action.payload
       },
       [axiosCases.rejected]: setError,
+
+      [deleteCase.pending]: (state) => {
+        state.status = 'load';
+        state.error = null
+      },
       [deleteCase.rejected]: setError
     }
 });

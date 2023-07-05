@@ -24,14 +24,17 @@ const Cases = () => {
       {status === 'loading' && <h2>Loading...</h2>}
       {error && <h2>An error occured: {error}</h2>}
 
+      {status === 'load' && <h4 className={css.update}>Обновите страницу, чтобы увидеть изменения</h4>}
+      {error && <h4>An error occured: {error}</h4>}
+
         <table>
           <thead>
             <tr>
               <th>Лицензионный номер</th>
               <th>Тип</th>
               <th>Цвет</th>
-              <th>Идентификатор кражи</th>
-              <th>Описание</th>
+              <th className={css.hide}>Идентификатор кражи</th>
+              <th className={css.hide}>Описание</th>
               <th></th>
             </tr>
           </thead>
@@ -41,8 +44,8 @@ const Cases = () => {
                   <td>{data.licenseNumber}</td>
                   <td>{data.type}</td>
                   <td>{data.color}</td>
-                  <td>{data._id}</td>
-                  <td>{data.description}</td>
+                  <td className={css.hide}>{data._id}</td>
+                  <td className={css.hide}>{data.description}</td>
                   <td>
                   <Link to={`/cases/:${data._id}`} key={data._id}>
                     <button className={clsx(css.button, css.additional)}>Дополнительно</button>

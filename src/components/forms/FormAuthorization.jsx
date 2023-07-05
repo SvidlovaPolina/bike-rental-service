@@ -7,7 +7,6 @@ const FormAuthorization = () => {
 
 	const dispatch = useDispatch();
 	const {status, error} = useSelector(state => state.auth)
-	// console.log(status)
 
 	const {
 		register,
@@ -23,12 +22,6 @@ const FormAuthorization = () => {
 
 	const onSumbit = (data) => {
 		dispatch(axiosAuthorization(data))
-		/*if(result.payload.result.status){
-			// перенаправить на страничку StaffPage (/staff)
-		} else{
-			// вывести сообщение из ошибки (почему не удалось авторизоваться)
-			alert(result.payload.result.message);
-		}*/
 		reset()
 	}
 

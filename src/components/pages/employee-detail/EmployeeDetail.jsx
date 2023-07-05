@@ -29,14 +29,12 @@ const EmployeeDetail = () => {
     axios(config)
     .then(function (response) {
       let data = response.data.data
-      // console.log(data)
       setEdit(new Map([
         ['firstName', data.firstName],
         ['lastName', data.lastName],
         ['email', data.email],
         ['approved', data.approved],
       ]))
-      console.log(data)
       setApproved(data.approved)
     })
 
@@ -67,7 +65,6 @@ const EmployeeDetail = () => {
     
     axios(config)
     .then(function (response) {
-      // let data = response.data
       console.log(response)
     })
 
@@ -77,10 +74,8 @@ const EmployeeDetail = () => {
   }
 
   const handleSelectChange = (e) => {
-    console.log(typeof e.target.value)
     edit.set('approved', e.target.value === 'true' ? true : false)
     setApproved(e.target.value === 'true' ? true : false)
-    console.log(edit)
   }
 
 
@@ -108,12 +103,10 @@ const EmployeeDetail = () => {
               </tr>
               <tr>
                 <th>Одобрен</th>
-                {/* <td contentEditable={true} suppressContentEditableWarning={true} onInput={(e) => onchange(e, 'approved')}>{edit.get('approved') ? 'Да' : 'Нет'}</td> */}
                 <td>
                   <select key='approved' className={css.select} onChange={handleSelectChange} value={approved}>
 				            <option value={true}>Да</option>
                     <option value={false}>Нет</option>
-                    {/* selected={edit.get('approved')} */}
 			            </select>
                 </td>
               </tr>

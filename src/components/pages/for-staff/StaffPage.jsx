@@ -9,7 +9,6 @@ function StaffPage() {
 
 	const dispatch = useDispatch();
 	const {status, error} = useSelector(state => state.token)
-	// console.log(status)
 
 	useEffect(() => {
 		dispatch(axiosToken())

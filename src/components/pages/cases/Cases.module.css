@@ -56,3 +56,24 @@
 .homeLink:hover {
 	color: #000;
 }
+
+.update {
+    color: #df1919cf;
+}
+
+@media (max-width: 882px ) {
+    
+    .container {
+        margin: 20px 10px;
+    }
+
+    .hide {
+        display: none;
+    }
+}
+
+@media (max-width: 568px ) {
+    .hide {
+        display: none;
+    }
+}
